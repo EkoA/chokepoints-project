@@ -1,21 +1,22 @@
-import React from 'react'
 import { useAtlasStore } from '../store/useAtlasStore'
 import { LAYER_COLORS, LAYER_NAMES, LAYER_HINTS } from '../utils/nodeHelpers'
+import { AboutModal } from './AboutModal'
 import type { LayerKey } from '../types'
 
 const LAYERS: LayerKey[] = ['maritime', 'cables', 'financial', 'tech', 'energy']
 
 export function TopBar() {
-  const { activeLayers, toggleLayer } = useAtlasStore()
+  const { activeLayers, toggleLayer, setAboutOpen } = useAtlasStore()
 
   return (
+    <>
     <div
       className="flex items-stretch flex-shrink-0 z-10"
       style={{ height: 52, background: 'var(--ink)', borderBottom: '1px solid rgba(255,255,255,.06)' }}
     >
       {/* Brand */}
       <div
-        className="flex items-center gap-2.5 px-5 flex-shrink-0"
+        className="topbar-brand flex items-center gap-2.5 px-5 flex-shrink-0"
         style={{ borderRight: '1px solid rgba(255,255,255,.07)' }}
       >
         <div style={{ fontFamily: 'Fraunces, serif', fontSize: 15, fontWeight: 600, color: '#fff' }}>
@@ -54,7 +55,7 @@ export function TopBar() {
                 <span style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,.88)', opacity: on ? 1 : 0.2 }}>
                   {LAYER_NAMES[layer]}
                 </span>
-                <span style={{ fontSize: 10, color: 'rgba(255,255,255,.24)', marginTop: 1, opacity: on ? 1 : 0.2 }}>
+                <span className="hidden sm:block" style={{ fontSize: 10, color: 'rgba(255,255,255,.24)', marginTop: 1, opacity: on ? 1 : 0.2 }}>
                   {LAYER_HINTS[layer]}
                 </span>
               </div>
@@ -81,6 +82,28 @@ export function TopBar() {
           }}
         />
       </div>
+
+      {/* About button */}
+      <button
+        onClick={() => setAboutOpen(true)}
+        className="flex items-center h-full flex-shrink-0 border-none cursor-pointer transition-colors"
+        style={{
+          borderLeft: '1px solid rgba(255,255,255,.07)',
+          background: 'transparent',
+          padding: '0 18px',
+          fontSize: 12,
+          fontWeight: 500,
+          color: 'rgba(255,255,255,.4)',
+          fontFamily: 'DM Sans, sans-serif',
+          transition: 'color .15s',
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,.8)' }}
+        onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,.4)' }}
+      >
+        About
+      </button>
     </div>
+    <AboutModal />
+    </>
   )
 }

@@ -85,13 +85,48 @@ function MobileDrawer() {
   const selectedNodeId = useAtlasStore((s) => s.selectedNodeId)
   const [open, setOpen] = React.useState(false)
 
+  // Open when a node is selected; don't auto-close on deselect so
+  // "← Overview" stays inside the drawer showing WelcomePanel.
   useEffect(() => {
-    setOpen(!!selectedNodeId)
+    if (selectedNodeId) setOpen(true)
   }, [selectedNodeId])
+
+  const closeDrawer = () => {
+    useAtlasStore.getState().clearSelection()
+    setOpen(false)
+  }
 
   return (
     <>
-      {/* Shown on mobile only */}
+      {/* Floating "Browse" button — only on mobile when drawer is closed */}
+      {!open && (
+        <button
+          onClick={() => setOpen(true)}
+          className="md:hidden"
+          aria-label="Browse nodes"
+          style={{
+            position: 'fixed', bottom: 24, left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 150,
+            background: 'var(--ink)',
+            color: '#fff',
+            border: 'none',
+            borderRadius: 24,
+            padding: '12px 28px',
+            fontSize: 13,
+            fontWeight: 500,
+            fontFamily: 'DM Sans, sans-serif',
+            boxShadow: '0 4px 20px rgba(0,0,0,.35)',
+            cursor: 'pointer',
+            whiteSpace: 'nowrap',
+            letterSpacing: '0.01em',
+          }}
+        >
+          Browse nodes ↑
+        </button>
+      )}
+
+      {/* Drawer overlay — mobile only */}
       <div
         className="md:hidden"
         style={{
@@ -103,7 +138,7 @@ function MobileDrawer() {
         {open && (
           <div
             style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,.3)' }}
-            onClick={() => useAtlasStore.getState().clearSelection()}
+            onClick={closeDrawer}
           />
         )}
 
@@ -111,16 +146,38 @@ function MobileDrawer() {
         <div
           style={{
             position: 'absolute', left: 0, right: 0, bottom: 0,
-            height: '70vh',
+            height: '76vh',
             background: 'var(--paper)',
             borderTop: '1px solid var(--rule)',
-            borderRadius: '12px 12px 0 0',
+            borderRadius: '14px 14px 0 0',
             transform: open ? 'translateY(0)' : 'translateY(100%)',
             transition: 'transform .3s ease',
             display: 'flex', flexDirection: 'column',
             overflow: 'hidden',
           }}
         >
+          {/* Drag handle + close button */}
+          <div
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              padding: '10px 16px 4px', flexShrink: 0, position: 'relative',
+            }}
+          >
+            <div style={{ width: 36, height: 4, borderRadius: 2, background: 'var(--rule2)' }} />
+            <button
+              onClick={closeDrawer}
+              aria-label="Close panel"
+              style={{
+                position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)',
+                background: 'none', border: 'none', cursor: 'pointer',
+                color: 'var(--ink3)', fontSize: 22, lineHeight: 1,
+                padding: '4px 6px', fontFamily: 'DM Sans, sans-serif',
+              }}
+            >
+              ×
+            </button>
+          </div>
+
           <Panel />
         </div>
       </div>

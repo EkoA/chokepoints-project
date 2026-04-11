@@ -150,7 +150,7 @@ export function ExploreDetail({ node, referenceCount }: Props) {
         {/* Maritime stats */}
         {node.layer === 'maritime' && node.tot && (
           sec('Annual Traffic (IMF PortWatch)',
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 7 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 7 }}>
               {[
                 { v: fmtN(node.tot), k: 'Vessels/yr' },
                 { v: fmtN(node.con ?? 0), k: 'Container' },
@@ -182,14 +182,14 @@ export function ExploreDetail({ node, referenceCount }: Props) {
         {sec('Risk level', <RiskMeter risk={node.risk} />)}
 
         {sec('If this was disrupted…',
-          <div style={{ background: '#fff8f0', border: '1px solid #f0d8b4', borderRadius: 4, padding: '12px 14px' }}>
+          <div style={{ background: 'var(--callout-warn-bg)', border: '1px solid var(--callout-warn-border)', borderRadius: 4, padding: '12px 14px' }}>
             <div style={{ fontSize: 13, color: 'var(--ink2)', lineHeight: 1.75 }}>{node.disruption}</div>
           </div>
         )}
 
         {node.realEvent && (
           sec('Historical record',
-            <div style={{ background: '#f8f4e8', border: '1px solid #e0d098', borderRadius: 4, padding: '12px 14px' }}>
+            <div style={{ background: 'var(--callout-hist-bg)', border: '1px solid var(--callout-hist-border)', borderRadius: 4, padding: '12px 14px' }}>
               <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', marginBottom: 7, color: 'var(--mod)' }}>📋 It has already happened</div>
               <div style={{ fontSize: 13, color: 'var(--ink2)', lineHeight: 1.75 }}>{node.realEvent}</div>
             </div>
@@ -198,8 +198,8 @@ export function ExploreDetail({ node, referenceCount }: Props) {
 
         {node.institutional_note && (
           sec('On institutional chokepoints',
-            <div style={{ background: '#f0f4ff', border: '1px solid #c0ccf0', borderRadius: 4, padding: '12px 14px' }}>
-              <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', marginBottom: 7, color: '#3050b0' }}>◇ On institutional chokepoints</div>
+            <div style={{ background: 'var(--callout-note-bg)', border: '1px solid var(--callout-note-border)', borderRadius: 4, padding: '12px 14px' }}>
+              <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', marginBottom: 7, color: 'var(--callout-note-ink)' }}>◇ On institutional chokepoints</div>
               <div style={{ fontSize: 13, color: 'var(--ink2)', lineHeight: 1.75 }}>{node.institutional_note}</div>
             </div>
           )

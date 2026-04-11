@@ -1,6 +1,12 @@
 import { create } from 'zustand'
 import type { LayerKey, Mode, TileSource } from '../types'
 
+interface FlyToTarget {
+  lon: number
+  lat: number
+  zoom: number
+}
+
 interface AtlasStore {
   activeLayers: Set<LayerKey>
   mode: Mode
@@ -9,6 +15,8 @@ interface AtlasStore {
   mapReady: boolean
   tileSource: TileSource
   searchQuery: string
+  aboutOpen: boolean
+  flyToTarget: FlyToTarget | null
 
   toggleLayer: (layer: LayerKey) => void
   soloLayer: (layer: LayerKey) => void
@@ -18,6 +26,9 @@ interface AtlasStore {
   setMapReady: (ready: boolean) => void
   setTileSource: (source: TileSource) => void
   setSearchQuery: (q: string) => void
+  setAboutOpen: (open: boolean) => void
+  triggerFlyTo: (target: FlyToTarget) => void
+  clearFlyTo: () => void
 }
 
 const ALL_LAYERS: LayerKey[] = ['maritime', 'cables', 'financial', 'tech', 'energy']
@@ -30,6 +41,8 @@ export const useAtlasStore = create<AtlasStore>((set, _get) => ({
   mapReady: false,
   tileSource: 'openfreemap',
   searchQuery: '',
+  aboutOpen: false,
+  flyToTarget: null,
 
   toggleLayer: (layer) => {
     set((state) => {
@@ -64,4 +77,7 @@ export const useAtlasStore = create<AtlasStore>((set, _get) => ({
   setMapReady: (ready) => set({ mapReady: ready }),
   setTileSource: (source) => set({ tileSource: source }),
   setSearchQuery: (q) => set({ searchQuery: q }),
+  setAboutOpen: (open) => set({ aboutOpen: open }),
+  triggerFlyTo: (target) => set({ flyToTarget: target }),
+  clearFlyTo: () => set({ flyToTarget: null }),
 }))

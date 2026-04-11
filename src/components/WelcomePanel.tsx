@@ -112,34 +112,6 @@ export function WelcomePanel() {
         </div>
       ) : (
         <>
-          <p style={{ fontSize: 13.5, color: 'var(--ink2)', lineHeight: 1.8 }}>
-            Not all chokepoints are the same kind of thing. This atlas distinguishes two types — and that distinction changes how you think about risk.
-          </p>
-
-          {/* Physical vs Institutional distinction box */}
-          <div style={{
-            background: 'var(--paper2)', border: '1px solid var(--rule)',
-            borderRadius: 4, padding: '14px 16px',
-          }}>
-            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--ink3)', marginBottom: 10 }}>
-              Two kinds of chokepoint
-            </div>
-
-            <div style={{ display: 'flex', gap: 14, marginBottom: 10 }}>
-              <div style={{ fontSize: 18, flexShrink: 0, width: 24 }}>●</div>
-              <div style={{ fontSize: 12.5, color: 'var(--ink2)', lineHeight: 1.6 }}>
-                <strong style={{ color: 'var(--ink)' }}>Physical</strong> — geography creates the bottleneck. Ships must pass through a narrow strait. Cables must cross an ocean through limited corridors. These can only be bypassed by changing your route.
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', gap: 14 }}>
-              <div style={{ fontSize: 18, flexShrink: 0, width: 24 }}>◇</div>
-              <div style={{ fontSize: 12.5, color: 'var(--ink2)', lineHeight: 1.6 }}>
-                <strong style={{ color: 'var(--ink)' }}>Institutional</strong> — network effects and law create the bottleneck. SWIFT emerged because every bank joined. TSMC built capabilities no one else could replicate. These can theoretically be bypassed given enough money and time — which is exactly what China has been attempting since 2019.
-              </div>
-            </div>
-          </div>
-
           {/* Layer rows */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {LAYERS.map((layer) => (
