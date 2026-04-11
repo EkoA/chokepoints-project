@@ -70,6 +70,29 @@ export function ScenarioDetail({ node }: Props) {
 
       {/* Body */}
       <div className="panel-scroll" style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column', gap: 18 }}>
+        {/* Image */}
+        {node.image && (
+          <div style={{ borderRadius: 4, overflow: 'hidden', lineHeight: 0, flexShrink: 0 }}>
+            <img
+              src={node.image}
+              alt={node.name}
+              onError={(e) => { (e.currentTarget as HTMLImageElement).parentElement!.style.display = 'none' }}
+              style={{
+                width: '100%',
+                height: 180,
+                objectFit: 'cover',
+                display: 'block',
+                borderRadius: 4,
+              }}
+            />
+            <div style={{
+              fontSize: 10, color: 'var(--ink3)', padding: '4px 2px',
+              textAlign: 'right', lineHeight: 1.4,
+            }}>
+              {node.imageCredit ?? 'Image: Wikimedia Commons (CC)'}
+            </div>
+          </div>
+        )}
         {/* Immediate effects */}
         <div style={{ background: '#fff8f0', border: '1px solid #f0d8b4', borderRadius: 4, padding: '12px 14px' }}>
           <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', marginBottom: 7, color: 'var(--high)' }}>⚠ Immediate effects</div>
