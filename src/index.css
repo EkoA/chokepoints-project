@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper:    #f4f0e8;
+  --paper2:   #ece7dc;
+  --paper3:   #e2dbd0;
+  --ink:      #1e1a14;
+  --ink2:     #4a4030;
+  --ink3:     #8a7a65;
+  --rule:     #d8d0c0;
+  --rule2:    #c8bfb0;
+  --crit:     #c62828;
+  --high:     #e65100;
+  --mod:      #827717;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Map canvas desaturation */
+.maplibregl-canvas {
+  filter: saturate(0.2) brightness(0.95) sepia(0.15);
+}
+
+/* Hide MapLibre default attribution */
+.maplibregl-ctrl-attrib { display: none !important; }
+.maplibregl-ctrl-logo { display: none !important; }
+.maplibregl-ctrl-bottom-right { display: none !important; }
+.maplibregl-ctrl-bottom-left { display: none !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--rule2); border-radius: 2px; }
+
+/* Marker cursor */
+.atlas-marker { cursor: pointer; }
+
+/* Fraunces serif helper */
+.font-fraunces { font-family: 'Fraunces', serif; }
+
+/* Scrollable panel content */
+.panel-scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Desktop panel — visible on ≥768px, hidden on mobile */
+.desktop-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  .desktop-panel { display: none; }
+}
+
+/* Prevent tap highlight on map & buttons */
+.atlas-marker,
+button { -webkit-tap-highlight-color: transparent; }
+
+/* Give the map container room to pan on touch */
+.maplibregl-map { touch-action: pan-x pan-y; }
+
+/* Scrollable ModeBar — hide scrollbar */
+@media (max-width: 639px) {
+  .mode-bar-scroll::-webkit-scrollbar { display: none; }
+}
