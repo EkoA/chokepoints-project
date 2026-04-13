@@ -1,5 +1,5 @@
 export type LayerKey = 'maritime' | 'cables' | 'financial' | 'tech' | 'energy'
-export type CategoryType = 'physical' | 'institutional'
+export type CategoryType = 'physical' | 'institutional' | 'hidden'
 export type RiskLevel = 'critical' | 'high' | 'moderate'
 export type Mode = 'explore' | 'scenario'
 export type TileSource = 'openfreemap' | 'cartodb'

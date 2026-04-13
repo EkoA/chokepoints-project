@@ -85,13 +85,27 @@ export function ExploreDetail({ node, referenceCount }: Props) {
           display: 'inline-flex', alignItems: 'center', gap: 6,
           marginTop: 10, padding: '5px 10px', borderRadius: 3,
           fontSize: 11, fontWeight: 500,
-          background: node.category === 'physical' ? 'rgba(21,101,192,.08)' : 'rgba(198,40,40,.08)',
-          color: node.category === 'physical' ? '#1565c0' : '#c62828',
-          border: `1px solid ${node.category === 'physical' ? 'rgba(21,101,192,.2)' : 'rgba(198,40,40,.2)'}`,
+          background: node.category === 'physical'
+            ? 'rgba(21,101,192,.08)'
+            : node.category === 'institutional'
+            ? 'rgba(198,40,40,.08)'
+            : 'rgba(130,119,23,.08)',
+          color: node.category === 'physical'
+            ? '#1565c0'
+            : node.category === 'institutional'
+            ? '#c62828'
+            : '#827717',
+          border: `1px solid ${node.category === 'physical'
+            ? 'rgba(21,101,192,.2)'
+            : node.category === 'institutional'
+            ? 'rgba(198,40,40,.2)'
+            : 'rgba(130,119,23,.2)'}`,
         }}>
           {node.category === 'physical'
             ? '● Physical chokepoint — geography creates the bottleneck'
-            : '◇ Institutional chokepoint — network effects & law create the bottleneck'}
+            : node.category === 'institutional'
+            ? '◇ Institutional chokepoint — network effects & law create the bottleneck'
+            : '◎ Hidden chokepoint — upstream dependency'}
         </div>
 
         {/* Cross-reference badge */}

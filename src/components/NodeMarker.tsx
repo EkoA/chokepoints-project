@@ -61,6 +61,16 @@ export function NodeMarker({ node, isSelected, isCascaded, isDimmed, onClick }: 
             stroke="#fff"
             strokeWidth={1.8}
           />
+        ) : node.category === 'hidden' ? (
+          // Hollow circle (upstream dependency)
+          <circle
+            cx={cx} cy={cy}
+            r={r}
+            fill={fillColor}
+            fillOpacity={0.3}
+            stroke={fillColor}
+            strokeWidth={2}
+          />
         ) : (
           // Diamond (rotated square)
           <polygon

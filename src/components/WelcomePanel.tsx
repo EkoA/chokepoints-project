@@ -101,7 +101,11 @@ export function WelcomePanel() {
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = 'var(--paper3)' }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'var(--paper2)' }}
               >
-                <div style={{ width: 8, height: 8, borderRadius: node.category === 'physical' ? '50%' : 2, background: color, flexShrink: 0, transform: node.category === 'institutional' ? 'rotate(45deg)' : 'none' }} />
+                {node.category === 'hidden' ? (
+                  <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'transparent', border: `1.5px solid ${color}`, flexShrink: 0 }} />
+                ) : (
+                  <div style={{ width: 8, height: 8, borderRadius: node.category === 'physical' ? '50%' : 2, background: color, flexShrink: 0, transform: node.category === 'institutional' ? 'rotate(45deg)' : 'none' }} />
+                )}
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontSize: 12, fontWeight: 500, color: 'var(--ink)', marginBottom: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{node.name}</div>
                   <div style={{ fontSize: 11, color: 'var(--ink3)' }}>{[LAYER_NAMES[node.layer], node.country].filter(Boolean).join(' · ')}</div>
@@ -116,6 +120,26 @@ export function WelcomePanel() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {LAYERS.map((layer) => (
               <LayerRow key={layer} layer={layer} count={LAYER_COUNTS[layer]} onSolo={soloLayer} />
+            ))}
+          </div>
+
+          {/* Category type legend */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--ink3)', marginBottom: 1 }}>
+              Chokepoint types
+            </div>
+            {[
+              { icon: '●', label: 'Physical', desc: 'Geography creates the bottleneck — a narrow strait, a single canal.' },
+              { icon: '◇', label: 'Institutional', desc: 'Network effects and law create the bottleneck — agreements, systems, single companies.' },
+              { icon: '◎', label: 'Hidden', desc: 'The suppliers behind the suppliers — obscure dependencies that almost nobody watches until they\'ve already caused a crisis.' },
+            ].map(({ icon, label, desc }) => (
+              <div key={label} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '9px 12px', border: '1px solid var(--rule)', borderRadius: 4, background: 'var(--paper2)' }}>
+                <span style={{ fontSize: 13, lineHeight: 1, marginTop: 1, flexShrink: 0, color: 'var(--ink2)' }}>{icon}</span>
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 500, color: 'var(--ink)', marginBottom: 2 }}>{label}</div>
+                  <div style={{ fontSize: 11, color: 'var(--ink3)', lineHeight: 1.5 }}>{desc}</div>
+                </div>
+              </div>
             ))}
           </div>
 

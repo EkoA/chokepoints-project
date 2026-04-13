@@ -204,6 +204,10 @@ export function MapView() {
           <svg width="12" height="12"><polygon points="6,1 11,6 6,11 1,6" fill="none" stroke="rgba(255,255,255,.5)" strokeWidth="1.5" /></svg>
           <span style={{ fontSize: 10, color: 'rgba(255,255,255,.45)' }}>◇ Institutional</span>
         </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <svg width="12" height="12"><circle cx="6" cy="6" r="4.5" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.5)" strokeWidth="1.5" /></svg>
+          <span style={{ fontSize: 10, color: 'rgba(255,255,255,.45)' }}>◎ Hidden (upstream)</span>
+        </div>
       </div>
 
       <TileFallbackBadge />

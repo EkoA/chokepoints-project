@@ -658,5 +658,172 @@
     ],
     "layer": "tech",
     "image": "https://commons.wikimedia.org/wiki/Special:FilePath/NXP_ARM_processor.JPG?width=800"
+  },
+  {
+    "id": "carl_zeiss",
+    "name": "Carl Zeiss SMT",
+    "country": "Germany",
+    "lat": 48.7748,
+    "lon": 10.0914,
+    "category": "hidden",
+    "layer": "tech",
+    "type": "Optical Components",
+    "metric": "Lenses inside 100% of ASML EUV machines",
+    "plain": "The German company that makes the lenses inside every machine capable of printing advanced chips — without them, ASML cannot build, and without ASML, no advanced chips exist anywhere on earth.",
+    "what": "Carl Zeiss SMT, based in Oberkochen, Germany, is the sole supplier of the extreme ultraviolet optical systems inside every ASML EUV lithography machine. These precision lenses — some of the most perfect optical instruments ever made — focus the light that prints circuits onto silicon at scales smaller than a virus. No other company makes them.",
+    "why": "Every advanced chip on earth — in iPhones, AI systems, military hardware, medical devices — is manufactured using ASML machines. Every ASML machine contains Carl Zeiss optics. This makes a single company in a small German city the deepest single-point dependency in the entire global technology stack. It sits one layer upstream of ASML, which sits one layer upstream of TSMC, which sits one layer upstream of almost every advanced chip on earth.",
+    "disruption": "If Carl Zeiss SMT were disrupted — through conflict, disaster or industrial accident — ASML could not build new EUV machines. Existing machines would continue operating until they required maintenance parts that could not be replaced. The global chip industry would begin degrading within months and could not recover until an alternative optical supplier was qualified — a process that would take years and may not be technically possible.",
+    "realEvent": "In 2023, ASML publicly acknowledged that Carl Zeiss SMT is an irreplaceable sole supplier for its EUV optics. The two companies have a formal joint development agreement and ASML holds a 24.9% stake in Zeiss SMT — a structure that reflects how existentially dependent ASML is on a single optical partner.",
+    "risk": "critical",
+    "source": "ASML Annual Report 2024 / Carl Zeiss SMT / OECD Semiconductor Supply Chain Analysis",
+    "institutional_note": "Unlike most tech chokepoints, Carl Zeiss SMT is both geographic (one facility in one German city) and institutional (decades of accumulated optical precision that cannot be replicated quickly). It is the upstream chokepoint that makes ASML's own monopoly possible.",
+    "cascades": [
+      {
+        "id": "asml",
+        "layer": "tech",
+        "effect": "Carl Zeiss makes the optics inside every ASML EUV machine — no Zeiss, no ASML machines"
+      },
+      {
+        "id": "tsmc",
+        "layer": "tech",
+        "effect": "TSMC depends on ASML machines which depend on Zeiss optics — a three-node chain from Germany to Taiwan"
+      }
+    ],
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Carl-zeiss-oberkochen-south-smt-building-2014.jpg?width=800",
+    "imageCredit": "© Hardwareonkel / Wikimedia Commons (CC BY-SA 4.0)"
+  },
+  {
+    "id": "euroclear",
+    "name": "Euroclear",
+    "country": "Belgium",
+    "lat": 50.8503,
+    "lon": 4.3517,
+    "category": "hidden",
+    "layer": "financial",
+    "type": "Securities Settlement",
+    "flow": "$40 trillion in assets under custody",
+    "plain": "The Belgian system that settles most European securities transactions — it's where $40 trillion in assets sit, and where Russian sovereign wealth was frozen in 2022.",
+    "what": "Euroclear is a Brussels-based financial market infrastructure that settles securities transactions — bonds, equities, funds — across Europe and internationally. It holds approximately $40 trillion in assets under custody on behalf of financial institutions globally, making it the world's largest securities settlement system.",
+    "why": "Euroclear sits one layer beneath the financial markets most people follow. When you hear that a country's assets have been 'frozen', Euroclear is often the mechanism. It became the centre of the largest sovereign asset freeze in history when approximately $300 billion in Russian central bank reserves held there were immobilised in 2022. It is currently at the centre of live geopolitical debate about whether those assets should be used to fund Ukraine's reconstruction.",
+    "disruption": "A disruption to Euroclear would freeze the settlement of European securities markets. Bonds could not be transferred, equity trades could not be settled, and the interbank lending that depends on securities as collateral would seize up. The cascading effect on European financial stability would be immediate and severe.",
+    "realEvent": "In February 2022, within days of Russia's invasion of Ukraine, Western governments froze approximately $300 billion in Russian sovereign assets held at Euroclear and other custodians. Euroclear held the largest single share. As of 2024, the interest accruing on those frozen assets — approximately $3 billion per year — has become a major source of funding for Ukraine, with the G7 agreeing to use it as collateral for a $50 billion loan.",
+    "risk": "high",
+    "source": "Euroclear Annual Report 2024 / BIS CPMI / European Commission sovereign asset freeze documentation",
+    "institutional_note": "Euroclear's chokepoint status is entirely institutional — it exists because European financial markets converged on a single settlement infrastructure over decades. Its location in Belgium means it is subject to EU jurisdiction, which is what made the Russian asset freeze legally possible.",
+    "cascades": [
+      {
+        "id": "swift",
+        "layer": "financial",
+        "effect": "SWIFT carries payment messages; Euroclear settles the underlying securities — together they are the complete financial weaponisation stack"
+      },
+      {
+        "id": "chips",
+        "layer": "financial",
+        "effect": "Dollar settlement and securities settlement are complementary systems — disrupting both simultaneously would freeze global capital markets"
+      }
+    ],
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Brussels_-_Euroclear_HQ.jpg?width=800",
+    "imageCredit": "© Marek Śliwecki / Wikimedia Commons (CC BY-SA 4.0)"
+  },
+  {
+    "id": "shin_etsu_sumco",
+    "name": "Shin-Etsu / Sumco (Silicon Wafers)",
+    "country": "Japan",
+    "lat": 35.6762,
+    "lon": 139.6503,
+    "category": "hidden",
+    "layer": "tech",
+    "type": "Silicon Wafer Manufacturing",
+    "metric": "~60% of global silicon wafer supply",
+    "plain": "Two Japanese companies supply the silicon wafers that every chip on earth is built on — before a chip can be designed, printed or manufactured, someone has to grow the perfect silicon it starts from.",
+    "what": "Shin-Etsu Chemical and Sumco Corporation, both headquartered in Japan, together produce approximately 60% of the global supply of silicon wafers — the thin discs of ultra-pure silicon that serve as the starting material for every semiconductor chip. Growing a silicon wafer requires pulling a perfect single crystal from molten silicon at extreme temperatures, a process that takes years to master and is extraordinarily difficult to scale.",
+    "why": "Silicon wafers are the most upstream physical input in the entire chip supply chain. Before TSMC can manufacture, before ASML can print, before Qualcomm can design — someone must provide perfect silicon. That someone is overwhelmingly Japanese. The concentration is so extreme that in 2019, when Japan restricted exports of semiconductor materials to South Korea, Samsung and SK Hynix — which together control most of the world's memory chip supply — were immediately threatened.",
+    "disruption": "A disruption to Japanese silicon wafer supply would halt chip manufacturing globally within weeks. There is no short-term alternative source at the required scale and purity. Wafer production requires specialised equipment and decades of accumulated process knowledge that cannot be replicated quickly.",
+    "realEvent": "In July 2019, Japan restricted exports of three semiconductor materials to South Korea — including photoresists and hydrogen fluoride essential to chip manufacturing — in a diplomatic dispute over wartime labour compensation. Samsung, SK Hynix and LG Display were immediately affected. The restrictions demonstrated how upstream material dependencies could be weaponised independently of chip design or fabrication controls.",
+    "risk": "high",
+    "source": "METI Japan / Shin-Etsu Chemical Annual Report / SEMI Industry Data / OECD Semiconductor Supply Chain Analysis 2023",
+    "institutional_note": "Japan's dominance in semiconductor materials is institutional — built over decades of chemical engineering specialisation that competitors have found extremely difficult to replicate. It is the reason US-China chip competition has drawn Japan into a role neither country initially anticipated.",
+    "cascades": [
+      {
+        "id": "tsmc",
+        "layer": "tech",
+        "effect": "TSMC manufactures on silicon wafers — Shin-Etsu and Sumco supply the raw material the entire fab depends on"
+      },
+      {
+        "id": "asml",
+        "layer": "tech",
+        "effect": "Without wafers to print on, ASML machines have nothing to process — wafer supply is upstream of the entire lithography chain"
+      }
+    ],
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/12-inch_silicon_wafer.jpg?width=800",
+    "imageCredit": "© Peellden / Wikimedia Commons (CC BY-SA 3.0)"
+  },
+  {
+    "id": "gerd_nile",
+    "name": "Grand Ethiopian Renaissance Dam",
+    "country": "Ethiopia / Egypt / Sudan",
+    "lat": 11.2147,
+    "lon": 35.0938,
+    "category": "hidden",
+    "layer": "energy",
+    "type": "Water Infrastructure",
+    "flow": "86% of the Nile's flow originates here",
+    "plain": "The largest dam in Africa, built on the river that Egypt depends on for 90% of its fresh water — with no binding agreement between the three countries involved and 350 million people caught in the middle.",
+    "what": "The Grand Ethiopian Renaissance Dam (GERD) on the Blue Nile in Ethiopia is the largest hydroelectric dam in Africa, with a reservoir capacity of 74 billion cubic metres. The Blue Nile contributes approximately 86% of the total flow of the Nile. Egypt, which has almost no rainfall and no alternative freshwater source, receives 90% of its fresh water from the Nile. Sudan sits between them.",
+    "why": "This is one of the most consequential resource disputes on earth and one of the least covered in Western business media. Egypt has described GERD as an existential threat and has not ruled out military action. Ethiopia has filled the reservoir over Egyptian objections. Sudan's position shifts depending on its government. There is no binding international agreement governing the Nile's waters between these three countries despite years of negotiation. The combined population affected is over 350 million people.",
+    "disruption": "A reduction in Nile flow to Egypt — whether through GERD operation, conflict, or dam failure — would threaten Egyptian agriculture, drinking water supply and political stability. Egypt has almost no groundwater alternative and extremely limited desalination capacity at present. A water crisis in Egypt would trigger food insecurity, mass displacement and regional instability affecting the entire Horn of Africa and Middle East.",
+    "realEvent": "Ethiopia began filling the GERD reservoir in 2020 without reaching agreement with Egypt or Sudan. Egypt formally raised the matter at the UN Security Council in 2020 and 2021. In 2023, talks mediated by the African Union collapsed again without resolution. Ethiopia completed the fourth filling of the reservoir in 2024. Egypt has repeatedly stated that its water security is a red line.",
+    "risk": "critical",
+    "source": "UN Security Council records / African Union mediation documents / Nile Basin Initiative / World Bank water security reports",
+    "cascades": [
+      {
+        "id": "badmandeb",
+        "layer": "maritime",
+        "effect": "An Egyptian water crisis would destabilise the Red Sea region — Egypt controls both the Suez Canal and the Bab el-Mandeb approach"
+      },
+      {
+        "id": "suez",
+        "layer": "maritime",
+        "effect": "Egyptian political instability triggered by water scarcity would threaten continued operation of the Suez Canal"
+      }
+    ],
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/GERD_Dam.jpg?width=800",
+    "imageCredit": "Prime Minister Office Ethiopia / Wikimedia Commons (public domain)"
+  },
+  {
+    "id": "luzon_strait_cables",
+    "name": "Luzon Strait (Cable Corridor)",
+    "country": "Philippines / Taiwan",
+    "lat": 20.5,
+    "lon": 121.5,
+    "category": "hidden",
+    "layer": "cables",
+    "cables": 9,
+    "plain": "The underwater corridor where trans-Pacific internet cables run between Asia and the Americas — directly through the Taiwan conflict zone.",
+    "what": "The Luzon Strait between Taiwan and the Philippines is the passage through which several major trans-Pacific submarine cables are routed — including systems connecting the United States, Japan, the Philippines and broader Asia. These cables carry a significant share of internet traffic between Asia and the Americas.",
+    "why": "This node makes the Taiwan situation dramatically more complex than the semiconductor story alone. A Taiwan conflict or Chinese military operation in the strait would not just disrupt chip manufacturing at TSMC — it would physically threaten the cables carrying internet traffic between Asia and the Americas. The geographic overlap between the military conflict zone and the cable corridor means that the internet and semiconductor crises would arrive simultaneously.",
+    "disruption": "Cable cuts in the Luzon Strait would reduce trans-Pacific internet capacity significantly, slowing cloud services, financial data feeds, and communications between Asian and American operations of multinational companies. Repair ships would be unable to operate in an active conflict zone, extending outages from weeks to months.",
+    "realEvent": "In February 2023, two of three submarine cables connecting Taiwan to the Matsu Islands — Taiwan's outlying islands close to mainland China — were cut by Chinese vessels. Taiwan's 14,000 Matsu residents lost most of their internet connectivity for 50 days while repairs were completed. Taiwanese officials described it as an act of grey-zone warfare. The incident demonstrated that cable cutting is already being used as a tool of pressure in the Taiwan Strait region.",
+    "risk": "critical",
+    "source": "TeleGeography Submarine Cable Map / US CISA Infrastructure Reports / Taiwan NCC incident reports 2023",
+    "cascades": [
+      {
+        "id": "taiwan_strait",
+        "layer": "maritime",
+        "effect": "The Luzon cable corridor and the Taiwan Strait shipping lane are the same geographic conflict zone — one crisis affects both"
+      },
+      {
+        "id": "tsmc",
+        "layer": "tech",
+        "effect": "A Taiwan conflict simultaneously cuts chip supply (TSMC) and trans-Pacific internet (Luzon cables)"
+      },
+      {
+        "id": "singapore",
+        "layer": "cables",
+        "effect": "Traffic rerouted away from Luzon would increase load on Singapore — the only alternative major hub in the region"
+      }
+    ],
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Luzon-strait0010.jpg?width=800",
+    "imageCredit": "© Mirada / Wikimedia Commons (CC BY-SA 3.0)"
   }
 ]
