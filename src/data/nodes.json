@@ -825,5 +825,79 @@
     ],
     "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Luzon-strait0010.jpg?width=800",
     "imageCredit": "© Mirada / Wikimedia Commons (CC BY-SA 3.0)"
+  },
+  {
+    "id": "spruce_pine",
+    "name": "Spruce Pine",
+    "country": "USA",
+    "lat": 35.9201,
+    "lon": -82.0646,
+    "layer": "tech",
+    "category": "hidden",
+    "type": "High-Purity Quartz",
+    "metric": "Majority of global semiconductor-grade quartz",
+    "plain": "A town of 2,000 people in the North Carolina mountains produces the ultra-pure quartz that silicon wafers are made from. There is no commercial alternative source on earth.",
+    "what": "Spruce Pine sits on a geological anomaly — an igneous rock formation that took hundreds of millions of years to form and produces quartz of extraordinary purity found nowhere else on earth at commercial scale. Two companies mine it here: Sibelco and The Quartz Corp. The quartz is used to make the crucibles inside which silicon ingots are grown at extreme temperatures — the first step in making every silicon wafer, and therefore every chip, on earth. It must be 99.9998% pure or better. Ordinary quartz sand cannot do this job.",
+    "why": "Every silicon wafer — the foundation of every chip on earth — is grown inside a quartz crucible. Those crucibles are made from Spruce Pine quartz. There is no substitute material and no alternative source at comparable scale or purity. The entire global semiconductor industry, from TSMC to Samsung to Intel, depends on the output of one small American mountain town whose geology took hundreds of millions of years to produce and cannot be replicated.",
+    "disruption": "A sustained disruption to Spruce Pine would halt silicon wafer production globally within weeks as stockpiles ran down. No wafers means no new chips. No new chips means smartphone production halts, AI infrastructure cannot expand, automotive manufacturing slows, and defence electronics face shortages. The cascade reaches every industry that depends on semiconductors — which is effectively every industry.",
+    "realEvent": "In September 2024, Hurricane Helene caused severe flooding in western North Carolina, directly hitting Spruce Pine and shutting down both mining operations. The global semiconductor industry quietly began assessing quartz stockpiles within days. Intel, TSMC and other major fabs monitored the situation closely. Operations resumed after several weeks — but the event revealed a vulnerability the industry had known about privately and hoped nobody would notice.",
+    "risk": "critical",
+    "source": "USGS Mineral Resources / industry analysis / Hurricane Helene impact reporting 2024",
+    "institutional_note": "Unlike most technology chokepoints, this one is entirely physical and geological — it cannot be replicated by investment or policy. The geology of Spruce Pine is unique. This makes it one of the few chokepoints in the technology layer that money alone cannot solve.",
+    "cascades": [
+      {
+        "id": "tsmc",
+        "layer": "tech",
+        "effect": "TSMC's silicon wafer supply depends on crucibles made from Spruce Pine quartz — no quartz means no wafers means no chips"
+      },
+      {
+        "id": "asml",
+        "layer": "tech",
+        "effect": "ASML machines print chips onto silicon wafers — if wafer production halts, ASML's entire output becomes temporarily irrelevant"
+      },
+      {
+        "id": "nvidia",
+        "layer": "tech",
+        "effect": "All NVIDIA AI chips are built on silicon wafers — a quartz disruption halts AI hardware expansion globally"
+      }
+    ],
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bon_Ami_mine.jpg?width=800"
+  },
+  {
+    "id": "baotou_rare_earth",
+    "name": "Baotou Rare Earth Complex",
+    "country": "China",
+    "lat": 40.6567,
+    "lon": 109.8400,
+    "layer": "energy",
+    "category": "hidden",
+    "type": "Rare Earth Processing",
+    "flow": "~85-90% of global rare earth processing",
+    "plain": "A Chinese industrial city processes the majority of the world's rare earth elements — the metals inside every EV battery, wind turbine, smartphone, fighter jet and MRI machine on earth.",
+    "what": "Baotou in Inner Mongolia is the centre of China's rare earth industry and the world's largest rare earth processing complex. Rare earth elements — 17 metals including neodymium, dysprosium and terbium — are essential to permanent magnets, EV motors, wind turbines, defence electronics, smartphones and medical equipment. While other countries have rare earth deposits, China has built the refining and processing infrastructure that turns raw ore into usable materials. The chokepoint is not the mining — it is the processing. Roughly 85-90% of global rare earth refining happens in China, the majority in and around Baotou.",
+    "why": "There is no green energy transition without rare earths. There is no advanced military capability without rare earths. There are no modern smartphones, EVs or wind turbines without rare earths. And almost all of them are processed through Chinese infrastructure before they reach the factories that build these products. Even rare earths mined in the US, Australia or Africa typically travel to China for processing. This gives China extraordinary leverage over industries and governments globally — leverage it has already demonstrated willingness to use.",
+    "disruption": "A disruption to Chinese rare earth processing would immediately affect EV manufacturing, defence electronics and consumer technology globally. Stockpiles would provide months of buffer, not years. Countries and companies that have been trying to build alternative processing capacity — the US, EU, Australia — are years away from meaningful scale. In the interim, the green energy transition slows, defence procurement is complicated, and consumer electronics face supply pressure.",
+    "realEvent": "In 2010, China restricted rare earth exports to Japan during a territorial dispute over the Senkaku Islands, causing immediate disruption to Japanese electronics and automotive manufacturing. Japan has spent every year since diversifying away from Chinese rare earth dependency. In 2023, China restricted exports of gallium and germanium — critical to semiconductors and defence electronics — in direct response to US chip export controls. In 2025, China expanded these restrictions further in response to US tariffs, adding more critical minerals to the restricted list and triggering immediate concern across US and European defence and technology supply chains.",
+    "risk": "critical",
+    "source": "USGS Critical Minerals / IEA Critical Minerals Report 2024 / Chinese Ministry of Commerce export control announcements",
+    "institutional_note": "Unlike most physical chokepoints, this one was created deliberately over decades through Chinese industrial policy — not by geography alone. China chose to build processing dominance as a strategic asset. That makes it both a physical and an institutional chokepoint simultaneously, and it means it can be partially unwound given sufficient investment and time — which is exactly what the US Inflation Reduction Act and EU Critical Raw Materials Act are attempting.",
+    "cascades": [
+      {
+        "id": "tanenergy",
+        "layer": "energy",
+        "effect": "EV batteries and wind turbines depend on rare earth magnets — a processing disruption slows the energy transition directly"
+      },
+      {
+        "id": "tsmc",
+        "layer": "tech",
+        "effect": "Gallium and germanium — rare earth adjacent materials China has already restricted — are used in compound semiconductors and chip manufacturing"
+      },
+      {
+        "id": "nvidia",
+        "layer": "tech",
+        "effect": "Rare earth materials are used in the magnets inside data centre cooling systems and power infrastructure that AI hardware depends on"
+      }
+    ],
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Baiyunebo_ast_2006181.jpg?width=800"
   }
 ]
