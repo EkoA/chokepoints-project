@@ -1,0 +1,150 @@
+# Critical Node Atlas
+
+> An interactive map of the places and systems the modern world quietly depends on — and what happens when they break.
+
+Critical Node Atlas is a free, open-source data visualisation tool that maps global critical infrastructure chokepoints across five interconnected systems: maritime shipping lanes, undersea cable hubs, financial networks, technology supply chains, and energy infrastructure.
+
+The tool lets users explore over 30 nodes, understand what each controls, see the disruption effects of a failure, trace cascade dependencies into other systems, and link to a specific node view via URL (?node=<id>).
+
+URL: https://ekoa.github.io/chokepoints-project/
+Source: https://github.com/
+
+---
+
+## What is a chokepoint?
+
+A chokepoint is a single point — geographic or institutional — through which a disproportionate share of global trade, data, energy, or financial flows must pass. Both kinds exist in this atlas:
+
+- **Geographic**: ships must transit a narrow strait; cables surface at a handful of landing points; ore is processed in one industrial complex.
+- **Institutional**: one company controls access to a chip design licence; one messaging cooperative connects every bank; two card networks process 90% of global card payments.
+
+Both kinds have failed before. Both kinds have been deliberately weaponised.
+
+---
+
+## Node catalogue
+
+Each node below includes: what it controls, its risk classification (critical / high / moderate), and its disruption effect summary.
+
+### Maritime Layer
+
+**Strait of Hormuz** (id: hormuz) — Risk: critical
+A third of all the world's seaborne oil — about 20 million barrels every day — must pass through this 33km gap between Iran and Oman. Closure would spike oil prices to $150-200+ per barrel within 48 hours. Cascades to: Ras Laffan LNG, Taiwan Strait energy shipping, Strait of Malacca.
+
+**Strait of Malacca** (id: malacca) — Risk: critical
+The world's busiest shipping lane — the only viable sea route between the Pacific and Indian Oceans. An 800km waterway between Malaysia and Indonesia, narrowing to 2.8km at its narrowest. Carries 40% of global trade. Cascades to: Singapore cable hub, TSMC chip supply.
+
+**Suez Canal** (id: suez) — Risk: critical
+The shortcut between Europe and Asia that saves 10 days and 7,000km. Can be blocked by a single ship — as happened in 2021 when Ever Given grounded for 6 days, blocking $9.6 billion of goods per day. In 2024, Houthi attacks halved canal traffic. Cascades to: Bab el-Mandeb, Egypt/Red Sea cables, Cape of Good Hope.
+
+**Taiwan Strait** (id: taiwan_strait) — Risk: critical
+The world's busiest strait by vessel count. A conflict here would simultaneously destroy global technology supply chains (TSMC) and energy imports for Japan and South Korea. No other location concentrates so many cascading vulnerabilities. Cascades to: TSMC, Taiwan Strait energy, ASML.
+
+**Bab el-Mandeb Strait** (id: badmandeb) — Risk: critical
+The southern entrance to the Suez route — currently one of the most actively attacked shipping lanes on earth. A 29km-wide strait between Yemen and Djibouti. Houthi rebels have demonstrated that even a non-state actor can effectively close it. Cascades to: Suez Canal, Egypt/Red Sea cables.
+
+**Panama Canal** (id: panama) — Risk: high
+The only shortcut between the Atlantic and Pacific Oceans. Now vulnerable to climate change-driven drought — in 2023-24 a severe drought cut daily transits from 38 to 18 ships, the first major canal disruption caused by climate rather than conflict.
+
+**Bosporus Strait** (id: bosporus) — Risk: high
+The only sea route in or out of the Black Sea. Turkey controls the entire maritime trade of Russia, Ukraine, Bulgaria, Romania and Georgia. The 1936 Montreux Convention gives Turkey legal authority over military passage — a lever it exercised in 2022.
+
+**Cape of Good Hope** (id: goodhope) — Risk: moderate
+The world's most important backup route — currently overwhelmed by ships diverted from the Red Sea. When the Suez route is disrupted, all diverted global shipping piles onto this single alternative, which is subject to severe storms.
+
+### Undersea Cables Layer
+
+**Singapore** (id: singapore) — Risk: critical
+The most cable-connected city on earth — 26+ cable systems converge here. The internet hub of all Southeast Asia. Every major trans-Asia cable system passes through. Cascades to: Strait of Malacca.
+
+**Egypt / Red Sea Corridor** (id: egypt_cables) — Risk: critical
+Where internet cables squeeze through the same geographic bottleneck as shipping. In January-February 2024, Houthi attacks damaged at least four major submarine cables — SeaCom, TGN-Gulf, AAE-1, and EIG — cutting Europe-Asia internet capacity by an estimated 25%. Cascades to: Suez Canal, Bab el-Mandeb.
+
+**Marseille** (id: marseille) — Risk: high
+Europe's digital gateway — 15+ cable systems land here, including SEA-ME-WE 4 & 5, PEACE, 2Africa, and AAE-1. A disproportionate fraction of Europe-Asia internet traffic flows through a single French city.
+
+**Mombasa** (id: mombasa) — Risk: critical
+East Africa's internet lifeline. 8 cable systems serve as the internet gateway for Kenya, Tanzania, Uganda, Ethiopia, Rwanda and beyond. In 2024, Red Sea cable cuts reduced capacity by 50%+ across East Africa. Cascades to: Egypt/Red Sea cables.
+
+**Luzon Strait (Cable Corridor)** (id: luzon_strait_cables) — Risk: critical
+The underwater corridor where trans-Pacific internet cables run between Asia and the Americas — directly through the Taiwan conflict zone. In 2023, Chinese vessels cut two cables connecting Taiwan to the Matsu Islands, leaving 14,000 residents with degraded connectivity for 50 days. Cascades to: Taiwan Strait, TSMC, Singapore.
+
+### Financial Layer
+
+**SWIFT** (id: swift) — Risk: critical
+The messaging system all banks use to communicate internationally — 53M+ messages per day, connecting 11,500+ financial institutions in 200+ countries. Iran was disconnected in 2012; its currency lost 50% within months. Russia was partially disconnected within 48 hours of invading Ukraine in 2022. Cascades to: CHIPS/Fedwire, Visa/Mastercard.
+
+**CHIPS + Fedwire** (id: chips) — Risk: critical
+The US systems that settle virtually all international dollar transactions — $5.5 trillion per day combined. CHIPS clears ~95% of cross-border dollar transactions. Fedwire settles Treasury securities. The dollar's reserve currency status means these New York systems control access to the currency most global trade requires. Cascades to: SWIFT.
+
+**Visa / Mastercard** (id: visa_mc) — Risk: high
+Two US companies processing 90% of global card payment transactions — 700M+ transactions per day. Both are subject to US sanctions law. Within 72 hours of February 2022 Russia sanctions, both networks suspended Russian operations, leaving 100 million cardholders with cards that didn't work internationally.
+
+**Euroclear** (id: euroclear) — Risk: high
+The Belgian system that settles most European securities transactions — $40 trillion in assets under custody. The centre of the largest sovereign asset freeze in history: approximately $300 billion in Russian central bank reserves were immobilised here in 2022. Cascades to: SWIFT, CHIPS/Fedwire.
+
+### Technology Layer
+
+**TSMC** (id: tsmc) — Risk: critical
+Taiwan Semiconductor Manufacturing Company — maker of 90% of the world's advanced chips (3nm and below). At these process nodes, it has essentially no competitor at volume. Manufactures chips for Apple, NVIDIA, AMD, Qualcomm and Google. The 2021 chip shortage cost the automotive industry $210 billion — a TSMC shutdown would be many times worse. Cascades to: ASML, NVIDIA, Taiwan Strait.
+
+**ASML** (id: asml) — Risk: critical
+The Dutch company that makes the only machines capable of printing advanced chips. Each EUV lithography machine costs ~$350 million and takes over a year to build. Without an EUV machine, it is physically impossible to manufacture chips below 7nm. China has been blocked from purchasing them since 2019 and has been unable to bridge the gap despite massive investment. Cascades to: TSMC, NVIDIA.
+
+**NVIDIA** (id: nvidia) — Risk: high
+Maker of the chips that power almost all AI — 80-90% of the data centre GPU market. Its CUDA software platform, built over 20 years, creates deep switching costs. US export controls on NVIDIA chips to China have become the primary mechanism of AI competition between the two superpowers. Cascades to: TSMC, ASML.
+
+**Google / Android** (id: google_android) — Risk: high
+The software that runs 72% of global smartphones. When Huawei was sanctioned in 2019, Google revoked its Android licence. Huawei's global smartphone market share fell from ~20% to under 3% within 18 months — the fastest collapse of a major consumer electronics company in the smartphone era.
+
+**ARM Holdings** (id: arm) — Risk: high
+The British company whose chip blueprints sit inside 99% of smartphones, including all iPhones and Android devices. ARM licenses the instruction set architecture used in virtually all mobile processors. When Huawei was sanctioned, ARM suspended its licence despite being a British company, concluding its designs incorporated enough US technology to trigger export controls. Cascades to: TSMC.
+
+**Carl Zeiss SMT** (id: carl_zeiss) — Risk: critical
+The German company that makes the lenses inside every ASML EUV machine. Based in Oberkochen, Germany, it is the sole supplier of EUV optical systems — some of the most precise optical instruments ever made. Every advanced chip on earth is manufactured using ASML machines; every ASML machine contains Carl Zeiss optics. ASML holds a 24.9% stake in Zeiss SMT, reflecting how existentially dependent it is on a single optical partner. Cascades to: ASML, TSMC.
+
+**Shin-Etsu / Sumco (Silicon Wafers)** (id: shin_etsu_sumco) — Risk: high
+Two Japanese companies supplying ~60% of the world's silicon wafers — the thin discs of ultra-pure silicon that every chip is built on. In 2019, Japan restricted semiconductor material exports to South Korea, immediately threatening Samsung and SK Hynix. Cascades to: TSMC, ASML.
+
+**Spruce Pine** (id: spruce_pine) — Risk: critical
+A town of 2,000 people in North Carolina producing the ultra-pure quartz that silicon wafer crucibles are made from. There is no commercial alternative source at comparable purity. In September 2024, Hurricane Helene flooded the mining operations, causing the global semiconductor industry to quietly assess quartz stockpiles within days. Cascades to: TSMC, ASML, NVIDIA.
+
+### Energy Layer
+
+**Ras Laffan (Qatar)** (id: rlaff) — Risk: critical
+The world's largest LNG export complex — producing approximately 20% of all internationally traded LNG. Europe shifted heavily to Qatari LNG after Russia reduced supplies in 2022. The entire export route passes through the Strait of Hormuz with no alternative. Cascades to: Strait of Hormuz.
+
+**Norwegian Gas Pipelines** (id: norway_pipes) — Risk: high
+Europe's biggest gas supplier after Russia was cut off. Norway exported approximately 117 billion cubic metres to Germany, UK, France and Belgium in 2023 — carrying load it wasn't designed for. The 2022 Nord Stream sabotage transferred enormous strategic weight to Norwegian infrastructure.
+
+**Taiwan Strait (Energy)** (id: tanenergy) — Risk: critical
+The shipping lane Japan and South Korea depend on for almost all their imported energy. Japan imports ~90% of its energy; South Korea ~85%. A Taiwan conflict would simultaneously disrupt semiconductor supply (TSMC) and block energy imports to America's two most important Pacific allies. Cascades to: Taiwan Strait, TSMC.
+
+**Druzhba Pipeline** (id: druzhba) — Risk: high
+A Soviet-era oil pipeline stretching from Russia through Ukraine to Hungary, Slovakia, Czech Republic, Germany and Poland. Fifty years of deliberate infrastructure dependency left Central European refineries with no port access for alternatives. Ukraine stopped remaining transit in January 2025.
+
+**Grand Ethiopian Renaissance Dam** (id: gerd_nile) — Risk: critical
+The largest dam in Africa, built on the river that Egypt depends on for 90% of its fresh water. The Blue Nile contributes 86% of the Nile's total flow. There is no binding international agreement governing the Nile's waters between Ethiopia, Sudan and Egypt. Combined population affected: over 350 million people. Egypt has not ruled out military action. Cascades to: Bab el-Mandeb, Suez Canal.
+
+**Baotou Rare Earth Complex** (id: baotou_rare_earth) — Risk: critical
+A Chinese industrial city processing the majority of the world's rare earth elements — the metals inside every EV battery, wind turbine, smartphone, fighter jet and MRI machine. Roughly 85-90% of global rare earth refining happens in China. In 2023 China restricted gallium and germanium exports; in 2025 expanded these further in response to US tariffs. Cascades to: Taiwan Strait energy, TSMC, NVIDIA.
+
+---
+
+## Using the data
+
+Each node is accessible at: https://ekoa.github.io/chokepoints-project/?node=<id>
+
+Layer filters: https://ekoa.github.io/chokepoints-project/?layers=maritime,cables,financial,tech,energy
+
+Available layers: maritime, cables, financial, tech, energy
+
+Risk classifications: critical, high, moderate
+
+Node categories: physical (geographic), institutional (legal/organisational), hidden (lesser-known upstream dependencies)
+
+---
+
+## Sources
+
+Data is sourced from: IEA Oil Market Report, IMF PortWatch, TeleGeography Submarine Cable Map, BIS CPMI, SWIFT Annual Review, ASML Annual Report, TSMC Annual Report, USGS Mineral Resources, Euroclear Annual Report, US BIS Export Control Orders, Nile Basin Initiative, OECD Semiconductor Supply Chain Analysis, and primary company reports where cited.

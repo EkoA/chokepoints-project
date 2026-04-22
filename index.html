@@ -4,8 +4,74 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Choke points</title>
-    <meta name="description" content="An interactive global chokepoint intelligence tool — shipping lanes, undersea cables, financial networks, technology, and energy systems." />
+
+    <title>Critical Node Atlas — Global Chokepoints Map</title>
+    <meta name="description" content="An interactive map of the bottlenecks the modern world quietly depends on — shipping straits, undersea cables, financial infrastructure, semiconductor supply chains, and energy systems. Explore 30+ critical nodes and trace disruption cascades." />
+    <meta name="keywords" content="chokepoints, critical infrastructure, global supply chain, Strait of Hormuz, Suez Canal, TSMC, SWIFT, submarine cables, geopolitical risk, supply chain fragility, semiconductor supply chain, energy security" />
+    <link rel="canonical" href="https://ekoa.github.io/chokepoints-project/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ekoa.github.io/chokepoints-project/" />
+    <meta property="og:title" content="Critical Node Atlas — Global Chokepoints Map" />
+    <meta property="og:description" content="An interactive map of the bottlenecks the modern world quietly depends on — shipping straits, undersea cables, financial infrastructure, semiconductor supply chains, and energy systems. Explore 30+ critical nodes and trace disruption cascades." />
+    <meta property="og:site_name" content="Critical Node Atlas" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Critical Node Atlas — Global Chokepoints Map" />
+    <meta name="twitter:description" content="An interactive map of the bottlenecks the modern world quietly depends on — shipping straits, undersea cables, financial infrastructure, semiconductor supply chains, and energy systems." />
+
+    <!-- JSON-LD: Dataset -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "Critical Node Atlas",
+      "description": "A structured dataset of global critical infrastructure chokepoints across five systems: maritime shipping lanes, undersea cable hubs, financial infrastructure, semiconductor supply chains, and energy networks. Each node includes what it controls, disruption effects, historical precedents, risk classification, and cascade dependencies.",
+      "url": "https://ekoa.github.io/chokepoints-project/",
+      "keywords": ["chokepoints", "critical infrastructure", "supply chain", "geopolitical risk", "maritime", "submarine cables", "semiconductors", "energy", "financial infrastructure"],
+      "creator": {
+        "@type": "Organization",
+        "name": "Critical Node Atlas"
+      },
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "isAccessibleForFree": true,
+      "variableMeasured": [
+        "shipping vessel counts",
+        "cable landings",
+        "financial transaction volumes",
+        "energy flow volumes",
+        "disruption cascade dependencies"
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Critical Node Atlas",
+      "url": "https://ekoa.github.io/chokepoints-project/",
+      "description": "Interactive global map exploring critical infrastructure chokepoints — places and systems the modern world quietly depends on, and what happens when they break.",
+      "applicationCategory": "DataVisualization",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Interactive global map with 30+ critical nodes",
+        "Five infrastructure layers: maritime, cables, financial, tech, energy",
+        "Disruption cascade visualisation",
+        "Scenario mode showing downstream failure chains",
+        "Shareable URLs for individual nodes and layer filters",
+        "Historical precedents for each chokepoint"
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
