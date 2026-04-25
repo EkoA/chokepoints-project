@@ -1,12 +1,13 @@
 import { useAtlasStore } from '../store/useAtlasStore'
 import { LAYER_COLORS, LAYER_NAMES, LAYER_HINTS } from '../utils/nodeHelpers'
 import { AboutModal } from './AboutModal'
+import { EmbedModal } from './EmbedModal'
 import type { LayerKey } from '../types'
 
 const LAYERS: LayerKey[] = ['maritime', 'cables', 'financial', 'tech', 'energy']
 
 export function TopBar() {
-  const { activeLayers, toggleLayer, setAboutOpen } = useAtlasStore()
+  const { activeLayers, toggleLayer, setAboutOpen, setEmbedModalOpen } = useAtlasStore()
 
   return (
     <>
@@ -83,6 +84,26 @@ export function TopBar() {
         />
       </div>
 
+      {/* Embed button */}
+      <button
+        onClick={() => setEmbedModalOpen(true)}
+        className="flex items-center h-full flex-shrink-0 border-none cursor-pointer transition-colors"
+        style={{
+          borderLeft: '1px solid rgba(255,255,255,.07)',
+          background: 'transparent',
+          padding: '0 16px',
+          fontSize: 12,
+          fontWeight: 500,
+          color: 'rgba(255,255,255,.4)',
+          fontFamily: 'DM Sans, sans-serif',
+          transition: 'color .15s',
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,.8)' }}
+        onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,.4)' }}
+      >
+        &lt;/&gt; Embed
+      </button>
+
       {/* About button */}
       <button
         onClick={() => setAboutOpen(true)}
@@ -104,6 +125,7 @@ export function TopBar() {
       </button>
     </div>
     <AboutModal />
+    <EmbedModal />
     </>
   )
 }

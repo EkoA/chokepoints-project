@@ -17,6 +17,9 @@ interface AtlasStore {
   searchQuery: string
   aboutOpen: boolean
   flyToTarget: FlyToTarget | null
+  isEmbed: boolean
+  embedModalOpen: boolean
+  setEmbedModalOpen: (open: boolean) => void
 
   toggleLayer: (layer: LayerKey) => void
   soloLayer: (layer: LayerKey) => void
@@ -33,6 +36,10 @@ interface AtlasStore {
 
 const ALL_LAYERS: LayerKey[] = ['maritime', 'cables', 'financial', 'tech', 'energy']
 
+// Read embed mode synchronously so the first render is already correct — avoids
+// a flash of the full chrome before the useEffect in App.tsx could set it.
+const _isEmbed = new URLSearchParams(window.location.search).get('embed') === '1'
+
 export const useAtlasStore = create<AtlasStore>((set, _get) => ({
   activeLayers: new Set(ALL_LAYERS),
   mode: 'explore',
@@ -43,6 +50,9 @@ export const useAtlasStore = create<AtlasStore>((set, _get) => ({
   searchQuery: '',
   aboutOpen: false,
   flyToTarget: null,
+  isEmbed: _isEmbed,
+  embedModalOpen: false,
+  setEmbedModalOpen: (open) => set({ embedModalOpen: open }),
 
   toggleLayer: (layer) => {
     set((state) => {

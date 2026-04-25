@@ -40,13 +40,14 @@ function App() {
 
   // Push URL state on selection/layer changes
   useEffect(() => {
+    if (store.isEmbed) return
     const params = new URLSearchParams()
     if (store.selectedNodeId) params.set('node', store.selectedNodeId)
     const layers = Array.from(store.activeLayers)
     if (layers.length < ALL_LAYER_KEYS.length) params.set('layers', layers.join(','))
     const newUrl = params.toString() ? `?${params.toString()}` : window.location.pathname
     window.history.replaceState({}, '', newUrl)
-  }, [store.selectedNodeId, store.activeLayers])
+  }, [store.selectedNodeId, store.activeLayers, store.isEmbed])
 
   // ── Keyboard navigation ────────────────────────────────────────────────────
   useEffect(() => {
@@ -61,22 +62,24 @@ function App() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden' }}>
-      <IntroOverlay />
-      <TopBar />
-      <ModeBar />
+      {!store.isEmbed && <IntroOverlay />}
+      {!store.isEmbed && <TopBar />}
+      {!store.isEmbed && <ModeBar />}
 
       {/* Main content area */}
       <div style={{ display: 'flex', flex: 1, minHeight: 0, overflow: 'hidden' }}>
         <MapView />
 
         {/* Desktop panel (hidden below 768px via CSS in index.css) */}
-        <div className="desktop-panel">
-          <Panel />
-        </div>
+        {!store.isEmbed && (
+          <div className="desktop-panel">
+            <Panel />
+          </div>
+        )}
       </div>
 
       {/* Mobile panel drawer — shown on small screens */}
-      <MobileDrawer />
+      {!store.isEmbed && <MobileDrawer />}
     </div>
   )
 }

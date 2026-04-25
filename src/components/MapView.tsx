@@ -5,6 +5,8 @@ import { useAtlasStore } from '../store/useAtlasStore'
 import { NodeMarker } from './NodeMarker'
 import { CascadeArcs } from './CascadeArcs'
 import { TileFallbackBadge } from './MapFallback'
+import { EmbedBadge } from './EmbedBadge'
+import { buildMainSiteUrl } from '../utils/embedUrl'
 import nodes from '../data/nodes.json'
 import type { Node } from '../types'
 
@@ -46,6 +48,7 @@ export function MapView() {
     setTileSource,
     setMapReady,
     searchQuery,
+    isEmbed,
   } = useAtlasStore()
 
   const fallbackTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -114,7 +117,7 @@ export function MapView() {
         onLoad={handleMapLoad}
         onError={handleMapError}
         onClick={() => {
-          useAtlasStore.getState().clearSelection()
+          if (!isEmbed) useAtlasStore.getState().clearSelection()
         }}
       >
         {/* Cascade arcs — rendered below markers in both modes */}
@@ -140,6 +143,10 @@ export function MapView() {
               isCascaded={isCascaded}
               isDimmed={isDimmed}
               onClick={() => {
+                if (isEmbed) {
+                  window.open(buildMainSiteUrl(activeLayers, node.id), '_blank', 'noopener,noreferrer')
+                  return
+                }
                 const cascadeIds = new Set(node.cascades.map((c) => c.id))
                 useAtlasStore.setState({
                   selectedNodeId: node.id,
@@ -211,6 +218,7 @@ export function MapView() {
       </div>
 
       <TileFallbackBadge />
+      {isEmbed && <EmbedBadge />}
 
       {/* Credit */}
       <div
