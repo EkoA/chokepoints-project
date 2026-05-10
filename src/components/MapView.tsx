@@ -1,14 +1,22 @@
-import { useCallback, useEffect, useRef } from 'react'
-import Map from 'react-map-gl/maplibre'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
+import Map, { Layer, Source } from 'react-map-gl/maplibre'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { useAtlasStore } from '../store/useAtlasStore'
 import { NodeMarker } from './NodeMarker'
 import { CascadeArcs } from './CascadeArcs'
+import { HeatmapControl } from './HeatmapControl'
 import { TileFallbackBadge } from './MapFallback'
 import { EmbedBadge } from './EmbedBadge'
 import { buildMainSiteUrl } from '../utils/embedUrl'
 import nodes from '../data/nodes.json'
-import type { Node } from '../types'
+import type { HeatmapField, Node } from '../types'
+
+const FIELD_MAX: Record<Exclude<HeatmapField, 'off'>, number> = {
+  tot: Math.max(...(nodes as Node[]).map((n) => n.tot ?? 0)),
+  tank: Math.max(...(nodes as Node[]).map((n) => n.tank ?? 0)),
+  con: Math.max(...(nodes as Node[]).map((n) => n.con ?? 0)),
+  bulk: Math.max(...(nodes as Node[]).map((n) => n.bulk ?? 0)),
+}
 
 const ALL_NODES = nodes as Node[]
 
@@ -49,6 +57,7 @@ export function MapView() {
     setMapReady,
     searchQuery,
     isEmbed,
+    heatmapField,
   } = useAtlasStore()
 
   const fallbackTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -107,6 +116,48 @@ export function MapView() {
         .filter((n): n is Node => n !== undefined)
     : []
 
+  // Zustand creates a new Set reference on every toggleLayer call, so activeLayers
+  // is a stable dep here — no workaround needed.
+  const heatmapGeoJSON = useMemo(() => ({
+    type: 'FeatureCollection' as const,
+    features: ALL_NODES
+      .filter((n) => activeLayers.has(n.layer))
+      .map((n) => ({
+        type: 'Feature' as const,
+        geometry: { type: 'Point' as const, coordinates: [n.lon, n.lat] },
+        properties: { tot: n.tot ?? 0, tank: n.tank ?? 0, con: n.con ?? 0, bulk: n.bulk ?? 0 },
+      })),
+  }), [activeLayers])
+
+  const heatmapPaint = useMemo(() => {
+    // When off or in scenario mode, keep the layer mounted but fully transparent.
+    const field = heatmapField === 'off' ? 'tot' : heatmapField
+    const maxVal = FIELD_MAX[field]
+    const visible = heatmapField !== 'off' && mode !== 'scenario'
+    return {
+      'heatmap-weight': ['interpolate', ['linear'], ['coalesce', ['get', field], 0], 0, 0, maxVal, 1],
+      // Intensity ramps up with zoom so close-in views stay readable
+      'heatmap-intensity': ['interpolate', ['linear'], ['zoom'], 0, 2, 5, 5],
+      // Color starts showing at density 0.05 — needed for lower-weight nodes (e.g. Hormuz
+      // under "All Traffic" has relative weight 0.38 and would be invisible at the old 0.35 floor)
+      'heatmap-color': [
+        'interpolate', ['linear'], ['heatmap-density'],
+        0,    'rgba(0,0,0,0)',
+        0.05, 'rgba(255,210,50,0.35)',
+        0.2,  'rgba(255,160,20,0.65)',
+        0.5,  'rgba(215,55,10,0.82)',
+        0.8,  'rgba(165,10,10,0.93)',
+        1,    'rgba(100,0,0,1)',
+      ],
+      // Larger radius at world zoom so each node glows across a visible area
+      'heatmap-radius': ['interpolate', ['linear'], ['zoom'], 0, 80, 5, 130],
+      // Fade out as user zooms into marker detail; markers are legible by zoom 7
+      'heatmap-opacity': visible
+        ? ['interpolate', ['linear'], ['zoom'], 6, 0.88, 9, 0]
+        : 0,
+    }
+  }, [heatmapField, mode])
+
   return (
     <div className="flex-1 relative overflow-hidden" style={{ background: '#c8dae8' }}>
       <Map
@@ -120,6 +171,16 @@ export function MapView() {
           if (!isEmbed) useAtlasStore.getState().clearSelection()
         }}
       >
+        {/* Heatmap — always mounted; opacity driven to 0 when off or in scenario mode */}
+        <Source id="heatmap-nodes" type="geojson" data={heatmapGeoJSON}>
+          <Layer
+            id="chokepoint-heat"
+            type="heatmap"
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            paint={heatmapPaint as any}
+          />
+        </Source>
+
         {/* Cascade arcs — rendered below markers in both modes */}
         {selectedNode && cascadeTargetNodes.length > 0 && (
           <CascadeArcs
@@ -217,6 +278,7 @@ export function MapView() {
         </div>
       </div>
 
+      <HeatmapControl />
       <TileFallbackBadge />
       {isEmbed && <EmbedBadge />}
 

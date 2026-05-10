@@ -3,6 +3,7 @@ export type CategoryType = 'physical' | 'institutional' | 'hidden'
 export type RiskLevel = 'critical' | 'high' | 'moderate'
 export type Mode = 'explore' | 'scenario'
 export type TileSource = 'openfreemap' | 'cartodb'
+export type HeatmapField = 'off' | 'tot' | 'tank' | 'con' | 'bulk'
 
 export interface CascadeLink {
   id: string

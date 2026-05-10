@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { LayerKey, Mode, TileSource } from '../types'
+import type { HeatmapField, LayerKey, Mode, TileSource } from '../types'
 
 interface FlyToTarget {
   lon: number
@@ -18,9 +18,11 @@ interface AtlasStore {
   aboutOpen: boolean
   flyToTarget: FlyToTarget | null
   isEmbed: boolean
+  heatmapField: HeatmapField
   embedModalOpen: boolean
   setEmbedModalOpen: (open: boolean) => void
 
+  setHeatmapField: (field: HeatmapField) => void
   toggleLayer: (layer: LayerKey) => void
   soloLayer: (layer: LayerKey) => void
   setMode: (mode: Mode) => void
@@ -52,7 +54,9 @@ export const useAtlasStore = create<AtlasStore>((set, _get) => ({
   flyToTarget: null,
   isEmbed: _isEmbed,
   embedModalOpen: false,
+  heatmapField: 'off',
   setEmbedModalOpen: (open) => set({ embedModalOpen: open }),
+  setHeatmapField: (field) => set({ heatmapField: field }),
 
   toggleLayer: (layer) => {
     set((state) => {
