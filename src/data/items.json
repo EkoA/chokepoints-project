@@ -1,0 +1,878 @@
+[
+  {
+    "id": "coffee",
+    "name": "Your morning coffee",
+    "emoji": "☕",
+    "category": "food",
+    "headline": "Beans from Vietnam and Brazil, energy to roast them, and a card machine to pay — three different chokepoint layers before you take a sip.",
+    "noticeWhen": "Your café raises prices twice in a few months and blames 'shipping costs'.",
+    "dependsOn": [
+      {
+        "nodeId": "badmandeb",
+        "via": "Robusta from Vietnam and Indonesia reaches Europe through the Red Sea. When ships avoid it, the beans still arrive — later and dearer.",
+        "timeToImpact": "weeks",
+        "basis": "observed",
+        "evidence": "During the 2024 Red Sea diversions, Asia–Europe container rates rose sharply and arrival times lengthened by roughly two weeks."
+      },
+      {
+        "nodeId": "suez",
+        "via": "The Red Sea route and Suez are the same journey — losing one means losing both.",
+        "timeToImpact": "weeks",
+        "basis": "observed",
+        "evidence": "Suez traffic fell by about half during the 2024 Houthi attacks."
+      },
+      {
+        "nodeId": "goodhope",
+        "via": "The diversion route. Adds 10–14 days and considerable fuel cost to every sack of beans.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "malacca",
+        "via": "Vietnamese and Indonesian beans pass through here on the way west.",
+        "timeToImpact": "weeks",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "norway_pipes",
+        "via": "Commercial roasting is gas-intensive. European roasters price their gas off the same supply that heats homes.",
+        "timeToImpact": "months",
+        "basis": "observed",
+        "evidence": "European food processors passed through large energy-cost increases during the 2022 gas price spike."
+      },
+      {
+        "nodeId": "visa_mc",
+        "via": "The card reader on the counter. Most independent cafés have no realistic fallback if card authorisation stops.",
+        "timeToImpact": "days",
+        "basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "id": "chocolate",
+    "name": "A bar of chocolate",
+    "emoji": "🍫",
+    "category": "food",
+    "headline": "Cocoa, palm oil and sugar arrive from three continents; the factory that combines them runs on imported gas.",
+    "noticeWhen": "The bar stays the same price but quietly loses 15 grams.",
+    "dependsOn": [
+      {
+        "nodeId": "malacca",
+        "via": "Palm oil from Malaysia and Indonesia — a core fat in most mass-market chocolate — ships west through the strait.",
+        "timeToImpact": "weeks",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "suez",
+        "via": "The Asia–Europe leg for palm oil, packaging film and finished product moving to Asian markets.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "badmandeb",
+        "via": "Same corridor as Suez; closure pushes all of it around Africa.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "norway_pipes",
+        "via": "Conching and tempering chocolate runs for hours at controlled heat. Energy is a visible line on a confectioner's cost sheet.",
+        "timeToImpact": "months",
+        "basis": "observed"
+      }
+    ]
+  },
+  {
+    "id": "bread",
+    "name": "A loaf of bread",
+    "emoji": "🍞",
+    "category": "food",
+    "headline": "Wheat through a single Turkish strait, fertiliser made from North Sea gas, and an oven that runs on the same gas.",
+    "noticeWhen": "Bread, pasta and flour all move together on the shelf — that is the grain corridor, not your supermarket.",
+    "dependsOn": [
+      {
+        "nodeId": "bosporus",
+        "via": "Russian and Ukrainian wheat — a large share of world exports — has one sea exit, and this is it.",
+        "timeToImpact": "weeks",
+        "basis": "observed",
+        "evidence": "Global wheat prices rose steeply in 2022 when Black Sea exports were interrupted, and eased when the grain corridor reopened."
+      },
+      {
+        "nodeId": "norway_pipes",
+        "via": "Nitrogen fertiliser is made from natural gas. Gas price is fertiliser price is next season's yield.",
+        "timeToImpact": "months",
+        "basis": "observed",
+        "evidence": "Several European ammonia plants curtailed or halted production during the 2022 gas price spike."
+      },
+      {
+        "nodeId": "gerd_nile",
+        "via": "Egypt is among the world's largest wheat importers and irrigates from the Nile. Pressure on either side pushes it harder into the world market.",
+        "timeToImpact": "years",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "suez",
+        "via": "Grain moving from the Black Sea to Asian and East African buyers transits here.",
+        "timeToImpact": "weeks",
+        "basis": "estimated"
+      }
+    ]
+  },
+  {
+    "id": "fresh_produce",
+    "name": "Fruit and veg in the supermarket",
+    "emoji": "🍌",
+    "category": "food",
+    "headline": "Refrigerated containers, long ocean legs and diesel all the way to the shelf.",
+    "noticeWhen": "Bananas and grapes are there but visibly older, and the price moved without explanation.",
+    "dependsOn": [
+      {
+        "nodeId": "panama",
+        "via": "Latin American fruit reaches the US east coast, Europe and Asia through the canal. Reefer cargo cannot simply wait out a queue.",
+        "timeToImpact": "weeks",
+        "basis": "observed",
+        "evidence": "Drought-driven transit restrictions in 2023–24 cut daily crossings and pushed some traffic to longer routes."
+      },
+      {
+        "nodeId": "hormuz",
+        "via": "Diesel for refrigerated containers, port handling and the lorry that completes the journey.",
+        "timeToImpact": "days",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "suez",
+        "via": "Counter-seasonal produce moving between hemispheres via the Mediterranean.",
+        "timeToImpact": "weeks",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "goodhope",
+        "via": "The fallback route — but ten extra days is a large fraction of a perishable cargo's life.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      }
+    ]
+  },
+  {
+    "id": "petrol",
+    "name": "Filling up the car",
+    "emoji": "⛽",
+    "category": "transport",
+    "headline": "The most direct line on this map: one strait moves a fifth of the world's oil, and the forecourt reprices within days.",
+    "noticeWhen": "Within 48 hours of a Gulf incident. This is the fastest-transmitting dependency in the atlas.",
+    "dependsOn": [
+      {
+        "nodeId": "hormuz",
+        "via": "About 20 million barrels a day leave the Gulf through a 33km gap. No pipeline can replace that volume.",
+        "timeToImpact": "days",
+        "basis": "observed",
+        "evidence": "Tanker attacks in the strait in 2019 tripled war-risk insurance rates within days; explicit closure threats in 2011–12 and 2018 moved crude markets immediately."
+      },
+      {
+        "nodeId": "badmandeb",
+        "via": "Gulf crude and products bound for Europe exit the Red Sea here.",
+        "timeToImpact": "days",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "malacca",
+        "via": "The same barrels heading east to China, Japan and Korea pass through here.",
+        "timeToImpact": "weeks",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "suez",
+        "via": "Products moving between Mediterranean and Red Sea refining centres.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "druzhba",
+        "via": "Overland crude into central Europe — the alternative that gets stressed when sea routes tighten.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      }
+    ]
+  },
+  {
+    "id": "new_car",
+    "name": "Buying a car",
+    "emoji": "🚗",
+    "category": "transport",
+    "headline": "A modern car carries over a thousand chips. In 2021 the world found out what happens when they stop arriving.",
+    "noticeWhen": "Delivery quoted in months rather than weeks, and used prices rising above list.",
+    "dependsOn": [
+      {
+        "nodeId": "tsmc",
+        "via": "Engine, braking, infotainment and driver-assistance controllers. Even basic models cannot be finished without them.",
+        "timeToImpact": "months",
+        "basis": "observed",
+        "evidence": "The 2021–22 semiconductor shortage left millions of vehicles unbuilt worldwide and drove used-car prices up sharply in the UK and US."
+      },
+      {
+        "nodeId": "spruce_pine",
+        "via": "The ultra-pure quartz for the crucibles that silicon wafers are grown in comes overwhelmingly from one small area of North Carolina.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "baotou_rare_earth",
+        "via": "Permanent magnets in motors, sensors, speakers and electric power steering.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "asml",
+        "via": "Every advanced chip in the car was patterned on a machine from one Dutch company.",
+        "timeToImpact": "years",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "suez",
+        "via": "Components and finished vehicles moving between Asian plants and European buyers.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "hormuz",
+        "via": "Petrochemical feedstock for the plastics, foams and coatings that make up much of the interior.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      }
+    ]
+  },
+  {
+    "id": "electric_car",
+    "name": "An electric car",
+    "emoji": "🔋",
+    "category": "transport",
+    "headline": "Swaps an oil dependency for a minerals one — and concentrates it more tightly, not less.",
+    "noticeWhen": "Lead times and battery-replacement quotes move well before sticker prices do.",
+    "dependsOn": [
+      {
+        "nodeId": "baotou_rare_earth",
+        "via": "Neodymium and dysprosium magnets sit at the heart of the traction motor. Processing capacity, not ore, is the bottleneck.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "malacca",
+        "via": "Cells and packs from Chinese and Korean plants ship west through here.",
+        "timeToImpact": "weeks",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "taiwan_strait",
+        "via": "Battery management and power electronics depend on chips made on the far side of this strait.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "tsmc",
+        "via": "Power semiconductors and controllers — more silicon per vehicle than a combustion car, not less.",
+        "timeToImpact": "months",
+        "basis": "observed"
+      }
+    ]
+  },
+  {
+    "id": "home_heating",
+    "name": "Heating your home",
+    "emoji": "🔥",
+    "category": "home",
+    "headline": "Four pipelines and one strait decide what a European winter costs.",
+    "noticeWhen": "The standing charge and unit rate both move at the next billing period.",
+    "dependsOn": [
+      {
+        "nodeId": "norway_pipes",
+        "via": "After 2022, Norwegian gas became Europe's single largest pipeline supply. The redundancy that used to exist no longer does.",
+        "timeToImpact": "weeks",
+        "basis": "observed",
+        "evidence": "European wholesale gas prices reached record highs in 2022 and household bills followed across the continent."
+      },
+      {
+        "nodeId": "rlaff",
+        "via": "Qatari LNG is the swing supply that replaces missing pipeline gas — and it has one way out.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "hormuz",
+        "via": "That way out is the Strait of Hormuz. Nearly a fifth of global LNG trade transits it.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "druzhba",
+        "via": "Overland supply into central Europe, and a recurring instrument of political pressure.",
+        "timeToImpact": "months",
+        "basis": "observed"
+      }
+    ]
+  },
+  {
+    "id": "electricity",
+    "name": "The electricity bill",
+    "emoji": "💡",
+    "category": "home",
+    "headline": "Gas sets the marginal price in most European markets — and the renewables meant to replace it have their own chokepoints.",
+    "noticeWhen": "Your tariff moves even though your usage did not.",
+    "dependsOn": [
+      {
+        "nodeId": "norway_pipes",
+        "via": "Gas-fired generation usually sets the wholesale price at the margin, so gas moves the whole bill.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "rlaff",
+        "via": "LNG fills the gap when pipeline supply falls short.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "hormuz",
+        "via": "The exit for that LNG, and for the oil still burned for power in parts of Asia.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "baotou_rare_earth",
+        "via": "Direct-drive wind turbines use large rare-earth magnet assemblies. The green transition runs through Inner Mongolia.",
+        "timeToImpact": "years",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "spruce_pine",
+        "via": "High-purity quartz is used in the crucibles for solar-grade silicon as well as semiconductor wafers.",
+        "timeToImpact": "years",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "tanenergy",
+        "via": "Japan, South Korea and Taiwan import almost all their fuel through this region. A disruption removes generating capacity for a third of world manufacturing.",
+        "timeToImpact": "weeks",
+        "basis": "estimated"
+      }
+    ]
+  },
+  {
+    "id": "clothes",
+    "name": "A T-shirt",
+    "emoji": "👕",
+    "category": "home",
+    "headline": "Cotton and polyester from Asia, stitched in Asia, shipped west on the longest and most exposed trade lane there is.",
+    "noticeWhen": "Ranges thin out and discounting stops before headline prices move.",
+    "dependsOn": [
+      {
+        "nodeId": "malacca",
+        "via": "The main artery between South and East Asian garment manufacturing and everywhere else.",
+        "timeToImpact": "weeks",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "suez",
+        "via": "The Asia–Europe leg. Fashion runs on tight seasonal calendars that do not absorb two extra weeks.",
+        "timeToImpact": "weeks",
+        "basis": "observed",
+        "evidence": "Several European retailers publicly flagged delivery delays during the 2024 Red Sea diversions."
+      },
+      {
+        "nodeId": "badmandeb",
+        "via": "Same route, southern end.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "goodhope",
+        "via": "The long way round, and the reason a delayed season becomes a discounted one.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "hormuz",
+        "via": "Polyester is a petrochemical product. Most of a fast-fashion wardrobe starts as oil.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      }
+    ]
+  },
+  {
+    "id": "atm_cash",
+    "name": "Taking cash out of an ATM",
+    "emoji": "🏧",
+    "category": "money",
+    "headline": "The most physical thing you do with money, and it still needs three institutional networks and a tank of diesel.",
+    "noticeWhen": "'Machine temporarily unavailable' at every branch in town on the same afternoon.",
+    "dependsOn": [
+      {
+        "nodeId": "visa_mc",
+        "via": "Two companies authorise the overwhelming majority of card transactions outside China. Your card is a claim on their network.",
+        "timeToImpact": "days",
+        "basis": "observed",
+        "evidence": "Both networks suspended Russian operations in 2022, instantly stranding domestically issued cards for international use."
+      },
+      {
+        "nodeId": "chips",
+        "via": "Interbank settlement behind the withdrawal — the machine pays out before the money has actually moved.",
+        "timeToImpact": "days",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "swift",
+        "via": "The messaging layer banks use to instruct each other across borders.",
+        "timeToImpact": "days",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "marseille",
+        "via": "Authorisation traffic is network traffic. It crosses the same cable landing points as everything else.",
+        "timeToImpact": "days",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "hormuz",
+        "via": "Cash is restocked by armoured van on a diesel schedule. Fuel rationing empties machines from the edges of the network inward.",
+        "timeToImpact": "weeks",
+        "basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "id": "card_payment",
+    "name": "Tapping your card",
+    "emoji": "💳",
+    "category": "money",
+    "headline": "Two companies, one clearing system, and a cable under the sea — between you and a sandwich.",
+    "noticeWhen": "The terminal says 'cash only' and the queue behind you does not move.",
+    "dependsOn": [
+      {
+        "nodeId": "visa_mc",
+        "via": "Card networks are a genuine duopoly in most of the world. There is no meaningful substitute at the point of sale.",
+        "timeToImpact": "days",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "chips",
+        "via": "Dollar-denominated clearing behind cross-border transactions.",
+        "timeToImpact": "days",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "swift",
+        "via": "Cross-border instruction messaging between the banks involved.",
+        "timeToImpact": "days",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "singapore",
+        "via": "For much of Asia, authorisation routes through this cable hub.",
+        "timeToImpact": "days",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "mombasa",
+        "via": "East African payment traffic depends on a small number of landings — as several countries discovered during 2024 cable faults.",
+        "timeToImpact": "days",
+        "basis": "observed",
+        "evidence": "Multiple simultaneous cable faults in 2024 disrupted connectivity and digital payments across parts of East and West Africa."
+      }
+    ]
+  },
+  {
+    "id": "pension",
+    "name": "Your pension",
+    "emoji": "📈",
+    "category": "money",
+    "headline": "You almost certainly own assets settled through a Belgian institution you have never heard of.",
+    "noticeWhen": "You would not — until the statement arrives. This is the least visible dependency here and one of the largest.",
+    "dependsOn": [
+      {
+        "nodeId": "euroclear",
+        "via": "A central securities depository holding trillions in bonds and equities. Most European pension assets settle through it or its peer.",
+        "timeToImpact": "days",
+        "basis": "observed",
+        "evidence": "Roughly €190bn of immobilised Russian sovereign assets sat at Euroclear after the 2022 sanctions, demonstrating the settlement layer's leverage."
+      },
+      {
+        "nodeId": "swift",
+        "via": "Cross-border instructions behind every international holding in the fund.",
+        "timeToImpact": "days",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "chips",
+        "via": "Dollar settlement for the US assets that dominate most global equity allocations.",
+        "timeToImpact": "days",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "marseille",
+        "via": "Market data and trading connectivity between Europe, the Gulf and Asia land here.",
+        "timeToImpact": "days",
+        "basis": "estimated"
+      }
+    ]
+  },
+  {
+    "id": "payroll",
+    "name": "Paying your staff",
+    "emoji": "🏦",
+    "category": "money",
+    "headline": "For any organisation with people or suppliers abroad, payday depends on two networks with no alternative.",
+    "noticeWhen": "International transfers sit 'pending' while domestic ones clear normally.",
+    "dependsOn": [
+      {
+        "nodeId": "swift",
+        "via": "The messaging standard for cross-border payment instructions. Exclusion from it has been used deliberately as a sanction.",
+        "timeToImpact": "days",
+        "basis": "observed",
+        "evidence": "Selected Russian banks were disconnected from SWIFT in 2022, severely constraining their cross-border payments."
+      },
+      {
+        "nodeId": "chips",
+        "via": "Nearly all large dollar payments clear through CHIPS and Fedwire. Dollar invoicing means dollar dependency even between two non-US parties.",
+        "timeToImpact": "days",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "egypt_cables",
+        "via": "Europe–Asia banking traffic crosses this corridor. Treasury systems fail over, but slowly.",
+        "timeToImpact": "days",
+        "basis": "estimated"
+      }
+    ]
+  },
+  {
+    "id": "smartphone",
+    "name": "Your phone",
+    "emoji": "📱",
+    "category": "digital",
+    "headline": "The densest object on this map — eight chokepoints across four layers, most of them upstream of anything you can see.",
+    "noticeWhen": "Launches slip, storage tiers vanish, and the 'budget' model quietly disappears from the range.",
+    "dependsOn": [
+      {
+        "nodeId": "tsmc",
+        "via": "One company in Taiwan makes the overwhelming majority of the world's leading-edge processors.",
+        "timeToImpact": "months",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "asml",
+        "via": "One Dutch company makes every EUV lithography machine on earth. There is no second supplier.",
+        "timeToImpact": "years",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "carl_zeiss",
+        "via": "The optics inside those machines come from a single German supplier. A chokepoint inside a chokepoint.",
+        "timeToImpact": "years",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "shin_etsu_sumco",
+        "via": "Two Japanese firms dominate the blank silicon wafers everything is built on.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "spruce_pine",
+        "via": "The crucibles those wafers are grown in need quartz of a purity found in commercial quantity in essentially one place.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "arm",
+        "via": "Nearly every phone processor licenses its instruction set from one company in Cambridge.",
+        "timeToImpact": "years",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "baotou_rare_earth",
+        "via": "Magnets in the speaker and haptics; rare earths in the screen and camera.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "taiwan_strait",
+        "via": "Both the chips and the finished handsets cross this water.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "google_android",
+        "via": "Outside China and Apple's ecosystem, one company controls the operating system, the app store and the services layer that make a handset usable.",
+        "timeToImpact": "months",
+        "basis": "observed",
+        "evidence": "US restrictions cut Huawei off from Google Mobile Services in 2019; its international handset sales collapsed despite the hardware being unchanged."
+      }
+    ]
+  },
+  {
+    "id": "laptop",
+    "name": "A new laptop",
+    "emoji": "💻",
+    "category": "digital",
+    "headline": "Same silicon chain as your phone, with a longer shipping tail and less room to absorb a shock.",
+    "noticeWhen": "Configurations you want are 'out of stock' for months while last year's model stays available.",
+    "dependsOn": [
+      {
+        "nodeId": "tsmc",
+        "via": "Processors and graphics silicon, including parts designed by companies that own no factories at all.",
+        "timeToImpact": "months",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "asml",
+        "via": "Upstream of every advanced part in the machine.",
+        "timeToImpact": "years",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "shin_etsu_sumco",
+        "via": "Wafer supply constrains how many chips can exist at all.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "spruce_pine",
+        "via": "High-purity quartz for the crucibles those wafers are grown in.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "malacca",
+        "via": "Assembly in China and Vietnam reaches Europe and the Gulf through this strait.",
+        "timeToImpact": "weeks",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "suez",
+        "via": "The Asia–Europe leg for finished units.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      }
+    ]
+  },
+  {
+    "id": "streaming",
+    "name": "Streaming a film",
+    "emoji": "📺",
+    "category": "digital",
+    "headline": "Video feels weightless. It travels as light through a handful of cables you could count on your fingers.",
+    "noticeWhen": "Quality drops to standard definition for a whole region at once, not just for you.",
+    "dependsOn": [
+      {
+        "nodeId": "marseille",
+        "via": "Where Europe, North Africa and Asia meet. A large share of intercontinental traffic lands at one Mediterranean city.",
+        "timeToImpact": "days",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "egypt_cables",
+        "via": "Most Europe–Asia cable capacity crosses a narrow Egyptian corridor. Cuts here have degraded service across two continents.",
+        "timeToImpact": "days",
+        "basis": "observed",
+        "evidence": "Cable damage in the Red Sea corridor in 2024 disrupted a significant share of Europe–Asia capacity and forced traffic onto longer routes."
+      },
+      {
+        "nodeId": "singapore",
+        "via": "The internet backbone for Southeast Asia converges here.",
+        "timeToImpact": "days",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "luzon_strait_cables",
+        "via": "Nearly all cables serving East Asia funnel through one earthquake-prone corridor north of the Philippines.",
+        "timeToImpact": "days",
+        "basis": "observed",
+        "evidence": "The 2006 Hengchun earthquake severed multiple cables here and disrupted East Asian connectivity for weeks."
+      },
+      {
+        "nodeId": "mombasa",
+        "via": "East Africa's connection to the rest of the internet rests on very few landings.",
+        "timeToImpact": "days",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "nvidia",
+        "via": "Encoding, recommendation and the AI features bolted onto every platform now run on one company's accelerators.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      }
+    ]
+  },
+  {
+    "id": "cloud_services",
+    "name": "Your company's cloud and SaaS",
+    "emoji": "☁️",
+    "category": "digital",
+    "headline": "A software business with no warehouse, no fleet and no factory still sits on at least eight of these nodes.",
+    "noticeWhen": "Latency to one region degrades, a provider declares a regional incident, and your SLA credits arrive a month later.",
+    "dependsOn": [
+      {
+        "nodeId": "egypt_cables",
+        "via": "Europe–Asia traffic between your regions crosses this corridor whether your architecture diagram shows it or not.",
+        "timeToImpact": "days",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "marseille",
+        "via": "A primary European landing point for intercontinental capacity.",
+        "timeToImpact": "days",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "singapore",
+        "via": "Regional hub for APAC availability zones and the traffic between them.",
+        "timeToImpact": "days",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "luzon_strait_cables",
+        "via": "The corridor serving Japanese, Korean and Taiwanese regions.",
+        "timeToImpact": "days",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "nvidia",
+        "via": "Accelerator supply now gates how fast any provider can add AI capacity — and what they charge for it.",
+        "timeToImpact": "months",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "tsmc",
+        "via": "Those accelerators, and the server CPUs beside them, are made in one place.",
+        "timeToImpact": "months",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "taiwan_strait",
+        "via": "A disruption here is a simultaneous compute and energy shock for the entire region your infrastructure sits in.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "swift",
+        "via": "Paying your overseas providers, and being paid by overseas customers.",
+        "timeToImpact": "days",
+        "basis": "observed"
+      }
+    ]
+  },
+  {
+    "id": "online_delivery",
+    "name": "A parcel you ordered online",
+    "emoji": "📦",
+    "category": "digital",
+    "headline": "Next-day delivery is a promise about ocean freight schedules made six weeks earlier.",
+    "noticeWhen": "Delivery estimates stretch from days to weeks across a whole category, not one seller.",
+    "dependsOn": [
+      {
+        "nodeId": "suez",
+        "via": "The short route from Asian manufacturing to European warehouses. Losing it costs about two weeks per container.",
+        "timeToImpact": "weeks",
+        "basis": "observed",
+        "evidence": "The Ever Given grounding in 2021 blocked the canal for six days and held up an estimated $9.6bn of goods per day."
+      },
+      {
+        "nodeId": "badmandeb",
+        "via": "The southern approach. Avoiding it means avoiding Suez.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "malacca",
+        "via": "Almost everything leaving East Asia westbound starts here.",
+        "timeToImpact": "weeks",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "panama",
+        "via": "Asia to the US east coast, and the route that congests when the canal restricts transits.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "goodhope",
+        "via": "Where the diverted traffic goes, and why freight rates move even for routes that were never affected.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "visa_mc",
+        "via": "The checkout itself.",
+        "timeToImpact": "days",
+        "basis": "estimated"
+      }
+    ]
+  },
+  {
+    "id": "medicines",
+    "name": "Prescription medicines",
+    "emoji": "💊",
+    "category": "health",
+    "headline": "Most generic drugs in Europe and the US begin as active ingredients made in India and China.",
+    "noticeWhen": "Your pharmacy substitutes a different brand, then tells you to try another branch.",
+    "dependsOn": [
+      {
+        "nodeId": "malacca",
+        "via": "Active pharmaceutical ingredients from Indian and Chinese producers move west through here.",
+        "timeToImpact": "weeks",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "suez",
+        "via": "The Asia–Europe leg for both ingredients and finished dosage forms.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "badmandeb",
+        "via": "Same corridor; temperature-controlled cargo tolerates delay poorly.",
+        "timeToImpact": "weeks",
+        "basis": "observed"
+      },
+      {
+        "nodeId": "hormuz",
+        "via": "A large share of pharmaceutical precursors are petrochemical derivatives.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      }
+    ]
+  },
+  {
+    "id": "hospital_imaging",
+    "name": "An MRI or CT scan",
+    "emoji": "🏥",
+    "category": "health",
+    "headline": "Diagnostic imaging depends on rare-earth processing and advanced semiconductors — neither of which a health service can source domestically.",
+    "noticeWhen": "Waiting lists lengthen for scans specifically, while consultations carry on as normal.",
+    "dependsOn": [
+      {
+        "nodeId": "baotou_rare_earth",
+        "via": "Rare-earth elements in magnet assemblies, detector materials and gadolinium contrast agents.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "tsmc",
+        "via": "Image reconstruction and machine control run on advanced processors with long qualification cycles in medical devices.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "spruce_pine",
+        "via": "Upstream of every one of those processors.",
+        "timeToImpact": "months",
+        "basis": "estimated"
+      },
+      {
+        "nodeId": "malacca",
+        "via": "Machines and spare parts from Asian and European manufacturers reach their destinations by sea.",
+        "timeToImpact": "weeks",
+        "basis": "estimated"
+      }
+    ]
+  }
+]

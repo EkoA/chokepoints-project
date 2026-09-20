@@ -12,6 +12,8 @@ interface AtlasStore {
   mode: Mode
   selectedNodeId: string | null
   cascadeNodeIds: Set<string>
+  selectedItemId: string | null
+  itemNodeIds: Set<string>
   mapReady: boolean
   tileSource: TileSource
   searchQuery: string
@@ -27,6 +29,7 @@ interface AtlasStore {
   soloLayer: (layer: LayerKey) => void
   setMode: (mode: Mode) => void
   selectNode: (id: string | null) => void
+  selectItem: (id: string | null, nodeIds?: Set<string>) => void
   clearSelection: () => void
   setMapReady: (ready: boolean) => void
   setTileSource: (source: TileSource) => void
@@ -47,6 +50,8 @@ export const useAtlasStore = create<AtlasStore>((set, _get) => ({
   mode: 'explore',
   selectedNodeId: null,
   cascadeNodeIds: new Set(),
+  selectedItemId: null,
+  itemNodeIds: new Set(),
   mapReady: false,
   tileSource: 'openfreemap',
   searchQuery: '',
@@ -72,7 +77,14 @@ export const useAtlasStore = create<AtlasStore>((set, _get) => ({
   },
 
   setMode: (mode) => {
-    set({ mode })
+    // The two selection kinds are mutually exclusive: an item selection is
+    // meaningless outside everyday mode, and a node selection would sit behind
+    // the item browser unseen. Clear whichever no longer applies.
+    if (mode === 'everyday') {
+      set({ mode, selectedNodeId: null, cascadeNodeIds: new Set() })
+    } else {
+      set({ mode, selectedItemId: null, itemNodeIds: new Set() })
+    }
   },
 
   selectNode: (id) => {
@@ -84,8 +96,24 @@ export const useAtlasStore = create<AtlasStore>((set, _get) => ({
     set({ selectedNodeId: id })
   },
 
+  // Items have no coordinates, so selecting one highlights the nodes it depends
+  // on instead. Callers pass the resolved id set, mirroring how selectNode
+  // leaves cascade resolution to the component that has the node to hand.
+  selectItem: (id, nodeIds) => {
+    if (!id) {
+      set({ selectedItemId: null, itemNodeIds: new Set() })
+      return
+    }
+    set({ selectedItemId: id, itemNodeIds: nodeIds ?? new Set() })
+  },
+
   clearSelection: () => {
-    set({ selectedNodeId: null, cascadeNodeIds: new Set() })
+    set({
+      selectedNodeId: null,
+      cascadeNodeIds: new Set(),
+      selectedItemId: null,
+      itemNodeIds: new Set(),
+    })
   },
 
   setMapReady: (ready) => set({ mapReady: ready }),

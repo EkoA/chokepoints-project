@@ -40,6 +40,7 @@ export function ModeBar() {
       <div className="flex gap-1.5 flex-shrink-0">
         {pill('explore', 'Explore')}
         {pill('scenario', 'Scenario — if this breaks…', 'Scenario')}
+        {pill('everyday', 'Everyday — what depends on this', 'Everyday')}
       </div>
 
       {/* Shape key — hidden on small screens */}

@@ -150,7 +150,7 @@ export function WelcomePanel() {
             borderRadius: 4,
             background: 'var(--paper2)',
           }}>
-            💡 <strong>Click any marker</strong> to explore. Use <strong>Scenario mode</strong> above to see how disrupting one node cascades through others.
+            💡 <strong>Click any marker</strong> to explore. <strong>Scenario mode</strong> shows how disrupting one node cascades through others — and <strong>Everyday mode</strong> starts from ordinary things you buy and works back to the chokepoints they pass through.
           </div>
         </>
       )}

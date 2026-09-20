@@ -52,6 +52,8 @@ export function MapView() {
     mode,
     selectedNodeId,
     cascadeNodeIds,
+    selectedItemId,
+    itemNodeIds,
     tileSource,
     setTileSource,
     setMapReady,
@@ -93,8 +95,11 @@ export function MapView() {
     ? OPENFREEMAP_STYLE
     : (CARTODB_STYLE as unknown as string)
 
-  // Which nodes to show
+  // Which nodes to show. An item's own nodes always render, even when a layer
+  // filter or search would otherwise hide them — the panel promises a count and
+  // the map has to be able to show all of it.
   const visibleNodes = ALL_NODES.filter((n) => {
+    if (mode === 'everyday' && itemNodeIds.has(n.id)) return true
     if (!activeLayers.has(n.layer)) return false
     if (searchQuery) {
       const q = searchQuery.toLowerCase()
@@ -133,7 +138,7 @@ export function MapView() {
     // When off or in scenario mode, keep the layer mounted but fully transparent.
     const field = heatmapField === 'off' ? 'tot' : heatmapField
     const maxVal = FIELD_MAX[field]
-    const visible = heatmapField !== 'off' && mode !== 'scenario'
+    const visible = heatmapField !== 'off' && mode !== 'scenario' && mode !== 'everyday'
     return {
       'heatmap-weight': ['interpolate', ['linear'], ['coalesce', ['get', field], 0], 0, 0, maxVal, 1],
       // Intensity ramps up with zoom so close-in views stay readable
@@ -157,6 +162,11 @@ export function MapView() {
         : 0,
     }
   }, [heatmapField, mode])
+
+  // In everyday mode an item highlights the nodes it depends on. Items have no
+  // coordinates of their own, so the map expresses the relationship by lighting
+  // up that set and dimming everything else.
+  const itemModeActive = mode === 'everyday' && !!selectedItemId
 
   return (
     <div className="flex-1 relative overflow-hidden" style={{ background: '#c8dae8' }}>
@@ -192,9 +202,12 @@ export function MapView() {
         {/* Markers */}
         {visibleNodes.map((node) => {
           const isSelected = node.id === selectedNodeId
-          const isCascaded = cascadeNodeIds.has(node.id)
-          const isDimmed =
-            mode === 'scenario' && !!selectedNodeId && !isSelected && !isCascaded
+          const isCascaded = itemModeActive
+            ? itemNodeIds.has(node.id)
+            : cascadeNodeIds.has(node.id)
+          const isDimmed = itemModeActive
+            ? !itemNodeIds.has(node.id)
+            : mode === 'scenario' && !!selectedNodeId && !isSelected && !isCascaded
 
           return (
             <NodeMarker
@@ -210,6 +223,12 @@ export function MapView() {
                 }
                 const cascadeIds = new Set(node.cascades.map((c) => c.id))
                 useAtlasStore.setState({
+                  // Clicking a marker is a request to read that node, so leave
+                  // everyday mode rather than opening a panel the item browser
+                  // would cover.
+                  ...(mode === 'everyday'
+                    ? { mode: 'explore' as const, selectedItemId: null, itemNodeIds: new Set<string>() }
+                    : {}),
                   selectedNodeId: node.id,
                   cascadeNodeIds: cascadeIds,
                 })
@@ -218,6 +237,23 @@ export function MapView() {
           )
         })}
       </Map>
+
+      {/* Everyday hint */}
+      {mode === 'everyday' && !selectedItemId && (
+        <div
+          style={{
+            position: 'absolute', top: 14, left: 14, zIndex: 50,
+            background: 'rgba(22,18,14,.82)',
+            border: '1px solid rgba(120,180,255,.3)',
+            borderRadius: 4, padding: '9px 13px',
+            fontSize: 12, color: 'rgba(255,255,255,.7)',
+            fontFamily: 'DM Sans, sans-serif',
+            backdropFilter: 'blur(4px)',
+          }}
+        >
+          ☕ Everyday mode: pick something from the panel to see what it depends on
+        </div>
+      )}
 
       {/* Scenario hint */}
       {mode === 'scenario' && !selectedNodeId && (

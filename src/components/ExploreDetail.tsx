@@ -2,6 +2,12 @@ import React from 'react'
 import { useAtlasStore } from '../store/useAtlasStore'
 import { RiskMeter } from './RiskMeter'
 import { LAYER_COLORS, LAYER_LABELS, fmtN } from '../utils/nodeHelpers'
+import {
+  TIME_BAND_COLORS,
+  TIME_BAND_LABELS,
+  itemNodeIdSet,
+  itemsForNode,
+} from '../utils/itemHelpers'
 import type { Node } from '../types'
 import nodes from '../data/nodes.json'
 
@@ -30,6 +36,19 @@ interface Props {
 export function ExploreDetail({ node, referenceCount }: Props) {
   const store = useAtlasStore()
   const color = LAYER_COLORS[node.layer]
+  const dependentItems = itemsForNode(node.id)
+
+  const openItem = (itemId: string) => {
+    const entry = dependentItems.find((e) => e.item.id === itemId)
+    if (!entry) return
+    useAtlasStore.setState({
+      mode: 'everyday',
+      selectedNodeId: null,
+      cascadeNodeIds: new Set(),
+      selectedItemId: entry.item.id,
+      itemNodeIds: itemNodeIdSet(entry.item),
+    })
+  }
 
   const jumpTo = (id: string) => {
     const target = ALL_NODES.find((n) => n.id === id)
@@ -254,6 +273,53 @@ export function ExploreDetail({ node, referenceCount }: Props) {
                   </button>
                 )
               })}
+            </div>
+          )
+        )}
+
+        {dependentItems.length > 0 && (
+          sec('What this reaches',
+            <div>
+              <div style={{ fontSize: 11, color: 'var(--ink3)', lineHeight: 1.55, marginBottom: 10 }}>
+                Everyday things that pass through this node. The dot shows how
+                quickly a disruption here would reach you.
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                {dependentItems.map(({ item, link }) => {
+                  const bandColor = TIME_BAND_COLORS[link.timeToImpact]
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => openItem(item.id)}
+                      title={`${TIME_BAND_LABELS[link.timeToImpact]} — ${link.via}`}
+                      style={{
+                        display: 'inline-flex', alignItems: 'center', gap: 6,
+                        padding: '6px 11px 6px 9px',
+                        border: '1px solid var(--rule)',
+                        borderRadius: 16,
+                        background: 'var(--paper2)',
+                        cursor: 'pointer',
+                        fontSize: 11.5,
+                        color: 'var(--ink2)',
+                        fontFamily: 'DM Sans, sans-serif',
+                        transition: 'background .12s, border-color .12s',
+                      }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLElement).style.background = 'var(--paper3)'
+                        ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--rule2)'
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLElement).style.background = 'var(--paper2)'
+                        ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--rule)'
+                      }}
+                    >
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: bandColor, flexShrink: 0 }} />
+                      <span aria-hidden="true">{item.emoji}</span>
+                      {item.name}
+                    </button>
+                  )
+                })}
+              </div>
             </div>
           )
         )}
